@@ -10,7 +10,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>React App is Rendering!!</div>
+        <h1> this is dumb </h1>
+        {/* <div>React App is Rendering!!</div> */}
       </div>
     );
   }
