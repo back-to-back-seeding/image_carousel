@@ -1,6 +1,6 @@
 {
   "name": "image-carousel",
-  "version": "1.0",
+  "version": "",
   "description": "image-carousel for FEC",
   "author": "Chris Ciervo",
   "license": "",
@@ -16,7 +16,6 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "faker": "^4.1.0",
-    "live-server": "^1.2.1",
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.27",
     "nodemon": "^2.0.4",

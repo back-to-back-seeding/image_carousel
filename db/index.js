@@ -40,7 +40,7 @@ const createListing = () => {
     });
     listing.save()
       .then((doc) => {
-        console.log('Saved!');
+        // console.log('Saved!');
       })
       .catch((err) => {
         console.error(err);
