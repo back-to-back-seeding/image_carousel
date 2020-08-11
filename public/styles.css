@@ -1,6 +1,11 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+
 body {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
-
 }
 
 .carousel {
@@ -43,6 +48,33 @@ body {
   cursor: pointer;
 }
 
+.photo {
+  border-radius: 1em;
+}
+
+.star {
+  display: flex;
+  color: rgb(255, 56, 92);
+}
+
 .rating {
   display: flex;
+}
+
+.ratingVal {
+  color: rgb(34, 34, 34);
+  font-size: 14px;
+}
+
+.comments {
+ color: rgb(113, 113, 113);
+ font-size: 14px;
+}
+
+.room {
+  display: flex;
+}
+
+ol li{
+  list-style-type: none;
 }
