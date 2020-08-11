@@ -1,4 +1,9 @@
+/* eslint-disable import/extensions */
 import React from 'react';
+import Header from './Header.jsx';
+import Images from './Images.jsx';
+import Rating from './Rating.jsx';
+import Listing from './Listing.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,8 +15,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <h1> React App Rendering! </h1> */}
-        {/* <div>React App is Rendering!!</div> */}
+        <Header />
+        <Images />
+        <Rating />
+        <Listing />
       </div>
     );
   }

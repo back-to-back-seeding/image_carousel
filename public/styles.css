@@ -1,8 +1,7 @@
 * {
   padding: 0;
-  margin: 0;
+  margin: 3;
 }
-
 
 body {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
@@ -59,14 +58,19 @@ body {
 
 .rating {
   display: flex;
+  margin-bottom: 2x;
 }
 
 .ratingVal {
+  display:flex;
   color: rgb(34, 34, 34);
   font-size: 14px;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .comments {
+ display: flex;
  color: rgb(113, 113, 113);
  font-size: 14px;
 }
@@ -76,5 +80,10 @@ body {
 }
 
 ol li{
+  display: flex;
   list-style-type: none;
+}
+
+.title {
+  overflow: hidden;
 }
