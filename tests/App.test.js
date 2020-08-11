@@ -34,9 +34,19 @@ describe('<App /> rendering', () => {
   });
 });
 
-// describe('<Header /> rendering', () => {
-//   it('should render one <h2>', () => {
-//     let wrapper = shallow(<Header />);
-//     expect(wrapper.children('h2')).toHaveLength(1);
-//   });
-// });
+describe('<Header /> rendering', () => {
+  it('should render one <h2> element', () => {
+    let wrapper = shallow(<Header />);
+    expect(wrapper.find('h2')).toHaveLength(1);
+  });
+
+  it('should render two buttons', () => {
+    let wrapper = shallow(<Header />);
+    expect(wrapper.find('button')).toHaveLength(2);
+  });
+
+  it('should render two scalable vectors', () => {
+    let wrapper = shallow(<Header />);
+    expect(wrapper.find('svg')).toHaveLength(2);
+  });
+});
