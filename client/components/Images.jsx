@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ListingImage = styled.img`
-  border-radius: 1em;
   background-color: inherit;
+  border-radius: 1em;
 `;
 
 const Wrapper = styled.div`

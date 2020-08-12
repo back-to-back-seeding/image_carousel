@@ -3,23 +3,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NumOfComments = styled.span`
-  margin: inherit;
-  padding: inherit;
+  background-color: inherit;
+  color: rgb(113, 113, 113);
   display: inline-block;
   font-size: 12px;
-  color: rgb(113, 113, 113);
-  background-color: inherit;
+  margin: inherit;
+  padding: inherit;
 `;
 
 const OutOfFiveStars = styled.span`
-  margin: inherit;
+  background-color: inherit;
+  color: rgb(34, 34, 34);
+  display: inline-block;
+  font-size: 14px;
   margin-right: 0.15em;
   margin-left: 0.40em;
   padding: inherit;
-  display: inline-block;
-  font-size: 14px;
-  color: rgb(34, 34, 34);
-  background-color: inherit;
 `;
 
 const Wrapper = styled.div`

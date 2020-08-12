@@ -4,19 +4,19 @@ import styled from 'styled-components';
 import NavButtons from './NavButtons.jsx';
 
 const Heading = styled.h2`
-  display: inherit;
   background-color: inherit;
+  display: inherit;
 `;
 
 const Section = styled.section`
-  display: inherit;
   background-color: inherit;
+  display: inherit;
 `;
 
 const Wrapper = styled.div`
+  background-color: rgb(247, 247, 247);
   display: flex;
   justify-content: space-between;
-  background-color: rgb(247, 247, 247);
 `;
 
 const Header = () => (

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Title = styled.div`
-  display: flex;
   background-color: rgb(247, 247, 247);
+  display: flex;
   overflow: hidden;
 `;
 

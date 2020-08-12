@@ -2,41 +2,42 @@ import React from 'react';
 import styled from 'styled-components';
 
 const RightButton = styled.button`
-  margin: 6px;
+  background-color: white;
+  border-color: rgba(0, 0, 0, 0.08);
   border-radius: 50%;
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.08);
-  width: 35px;
-  height: 35px;
-  background-color: white;
-  font-size: 16px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  font-size: 16px;
+  height: 35px;
+  margin: 6px;
   outline: none;
+  width: 35px;
 `;
 
 const LeftButton = styled.button`
-  margin: 6px;
+  background-color: white;
+  border-color: rgba(0, 0, 0, 0.08);
   border-radius: 50%;
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.08);
-  width: 35px;
-  height: 35px;
-  background-color: white;
-  font-size: 16px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  font-size: 16px;
+  height: 35px;
+  margin: 6px;
   outline: none;
+  width: 35px;
 `;
 
 const PageCount = styled.div`
   font-size: 14px;
+  margin-right: 16px;
 `;
 
 const Wrapper = styled.div`
-  display: flex;
   align-items: center;
   background-color: rgb(247, 247, 247);
+  display: flex;
 `;
 
 const NavButtons = () => (
