@@ -7,6 +7,8 @@ import Images from './Images.jsx';
 import Listing from './Listing.jsx';
 import NightlyRate from './NightlyRate.jsx';
 import Rating from './Rating.jsx';
+import axios from 'axios';
+
 
 const Wrapper = styled.div`
   margin: 0;
@@ -18,6 +20,23 @@ class App extends React.Component {
     super(props);
     this.state = {
     };
+    this.getListings = this.getListings.bind(this);
+  }
+
+  componentDidMount() {
+    this.getListings();
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  getListings() {
+    axios.get('/suggestedListings')
+      .then((response) => {
+        console.log('GET reqeust made');
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log('We have an error!');
+      });
   }
 
   render() {
