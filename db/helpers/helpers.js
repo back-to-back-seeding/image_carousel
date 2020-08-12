@@ -41,6 +41,11 @@ const helpers = {
     Math.floor(Math.random() * 350) + 50
   ),
 
+  setRandomAvgRating: () => {
+    const rand = (Math.random() * 5) + 1;
+    return Number(rand.toFixed(2));
+  },
+
   setRandomNumOfRatings: () => (
     Math.floor(Math.random() * 100)
   ),

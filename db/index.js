@@ -20,6 +20,7 @@ const listingSchema = new mongoose.Schema({
   description: String,
   title: String,
   rate: Number,
+  avgRating: Number,
   ratingNumber: Number,
   previouslySaved: Boolean,
   superhost: Boolean,
@@ -34,6 +35,7 @@ const createListing = () => {
       description: helpers.setRandomDescription(),
       title: helpers.setRandomTitle(),
       rate: helpers.setRandomRate(),
+      avgRating: helpers.setRandomAvgRating(),
       numberOfRatings: helpers.setRandomNumOfRatings(),
       previosulySaved: faker.fake('{{random.boolean}}'),
       superhost: faker.fake('{{random.boolean}}'),
@@ -50,3 +52,4 @@ const createListing = () => {
 createListing();
 
 module.exports = Listing;
+
