@@ -52,7 +52,7 @@ class App extends React.Component {
     return (
       <Wrapper>
         <Header />
-        <Images />
+        <Images image={this.state.suggestedListings[0]} />
         <Rating />
         <Listing />
         <Description description={this.state.suggestedListings[0]} />
