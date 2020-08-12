@@ -53,7 +53,7 @@ class App extends React.Component {
       <Wrapper>
         <Header />
         <Images image={this.state.suggestedListings[0]} />
-        <Rating />
+        <Rating rating={this.state.suggestedListings[0]} />
         <Listing listing={this.state.suggestedListings[0]} />
         <Description description={this.state.suggestedListings[0]} />
         <NightlyRate rate={this.state.suggestedListings[0]} />

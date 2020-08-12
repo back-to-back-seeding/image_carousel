@@ -42,7 +42,7 @@ const helpers = {
   ),
 
   setRandomAvgRating: () => {
-    const rand = (Math.random() * 5) + 1;
+    const rand = (Math.random() * 4) + 1;
     return Number(rand.toFixed(2));
   },
 

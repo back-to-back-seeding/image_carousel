@@ -21,7 +21,7 @@ const listingSchema = new mongoose.Schema({
   title: String,
   rate: Number,
   avgRating: Number,
-  ratingNumber: Number,
+  numberOfRatings: Number,
   previouslySaved: Boolean,
   superhost: Boolean,
 });
@@ -52,4 +52,3 @@ const createListing = () => {
 createListing();
 
 module.exports = Listing;
-
