@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -7,8 +9,15 @@ const Title = styled.div`
   overflow: hidden;
 `;
 
-const Description = () => (
-  <Title>Lurious 2 Bedroom Apartment</Title>
+const Description = (props) => (
+  <Title>
+    <div>
+      {console.log('test1', props.description)}
+    </div>
+    <div>
+      {console.log('test2', props.description.description)}
+    </div>
+  </Title>
 );
 
 export default Description;
