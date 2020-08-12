@@ -56,7 +56,7 @@ class App extends React.Component {
         <Rating />
         <Listing listing={this.state.suggestedListings[0]} />
         <Description description={this.state.suggestedListings[0]} />
-        <NightlyRate />
+        <NightlyRate rate={this.state.suggestedListings[0]} />
       </Wrapper>
     );
   }
