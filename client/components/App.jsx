@@ -29,13 +29,15 @@ class App extends React.Component {
     this.getListings();
   }
 
+  // TODO try to figure out why the db keeps automatically adding data to db
   // eslint-disable-next-line class-methods-use-this
   getListings() {
     axios.get('/suggestedListings')
       .then((response) => {
         console.log('GET reqeust made');
         const suggestedListings = response.data;
-        console.log(response.data);
+
+        console.log(response.data.slice(0, 12));
         this.setState({ suggestedListings, isLoading: false });
       })
       .catch((error) => {

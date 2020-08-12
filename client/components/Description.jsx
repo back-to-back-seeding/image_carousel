@@ -10,14 +10,7 @@ const Title = styled.div`
 `;
 
 const Description = (props) => (
-  <Title>
-    <div>
-      {console.log('test1', props.description)}
-    </div>
-    <div>
-      {console.log('test2', props.description.description)}
-    </div>
-  </Title>
+  <Title>{props.description.description}</Title>
 );
 
 export default Description;

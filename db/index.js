@@ -28,7 +28,7 @@ const listingSchema = new mongoose.Schema({
 const Listing = mongoose.model('Listing', listingSchema);
 
 const createListing = () => {
-  for (let i = 1; i < 50; i += 1) {
+  for (let i = 1; i < 12; i += 1) {
     const listing = new Listing({
       image: `https://fec-image-carousel-photos.s3.us-east-2.amazonaws.com/image-${helpers.selectImage()}.jpg`,
       description: helpers.setRandomDescription(),
