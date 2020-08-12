@@ -5,8 +5,8 @@ import Description from './Description.jsx';
 import Header from './Header.jsx';
 import Images from './Images.jsx';
 import Listing from './Listing.jsx';
-import Rating from './Rating.jsx';
 import NightlyRate from './NightlyRate.jsx';
+import Rating from './Rating.jsx';
 
 const Wrapper = styled.div`
   margin: 0;
@@ -30,7 +30,6 @@ class App extends React.Component {
         <Description />
         <NightlyRate />
       </Wrapper>
-
     );
   }
 }

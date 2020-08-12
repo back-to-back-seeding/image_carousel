@@ -1,5 +1,7 @@
+/* eslint-disable import/extensions */
 import React from 'react';
 import styled from 'styled-components';
+import NavButtons from './NavButtons.jsx';
 
 const Heading = styled.h2`
   display: inherit;
@@ -13,6 +15,7 @@ const Section = styled.section`
 
 const Wrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   background-color: rgb(247, 247, 247);
 `;
 
@@ -21,15 +24,8 @@ const Header = () => (
     <Section>
       <Heading>More Places to Stay</Heading>
     </Section>
+    <NavButtons />
   </Wrapper>
 );
 
 export default Header;
-
-  // <div className="heading">
-  //   <div>
-  //     <section>
-  //       <h2>More Places to Stay</h2>
-  //     </section>
-  //   </div>
-  // </div>
