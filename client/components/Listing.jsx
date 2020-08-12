@@ -6,6 +6,7 @@ const AmountOfSpace = styled.li`
   padding: inherit;
   display: inherit;
   background-color: inherit;
+  font-size: 16px;
 `;
 
 const List = styled.ol`
@@ -20,6 +21,7 @@ const SpaceAvailable = styled.li`
   padding: inherit;
   display: inherit;
   background-color: inherit;
+  font-size: 16px;
 `;
 
 const Wrapper = styled.div`
