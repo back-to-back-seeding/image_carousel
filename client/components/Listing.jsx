@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -31,11 +33,11 @@ const Wrapper = styled.div`
   padding: 0;
 `;
 
-const Listing = () => (
+const Listing = (props) => (
   <Wrapper>
     <List>
-      <SpaceAvailable>Entire Apartment</SpaceAvailable>
-      <AmountOfSpace>1 Bed</AmountOfSpace>
+      <SpaceAvailable>{props.listing.title}</SpaceAvailable>
+      {/* <AmountOfSpace>1 Bed</AmountOfSpace> */}
     </List>
   </Wrapper>
 );
