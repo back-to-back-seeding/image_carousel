@@ -13,7 +13,7 @@ const RightButton = styled.button`
   outline: none;
   width: 35px;
 `;
-
+// TODO figure out why transitions aren't working...
 const RightButtonHover = styled.button`
   background-color: blue;
   border-color: rgba(0, 0, 0, 0.08);
@@ -25,6 +25,7 @@ const RightButtonHover = styled.button`
   margin: 0px;
   outline: none;
   width: 35px;
+  transition: box-shadow 0.2s ease 0s;
 `;
 
 const LeftButton = styled.button`
@@ -39,7 +40,7 @@ const LeftButton = styled.button`
   outline: none;
   width: 35px;
 `;
-
+// TODO figure out why transitions aren't rendering
 const LeftButtonHover = styled.button`
   background-color: blue;
   border-color: rgba(0, 0, 0, 0.08);
@@ -51,6 +52,7 @@ const LeftButtonHover = styled.button`
   margin-right: 12px;
   outline: none;
   width: 35px;
+  transition: box-shadow 0.2s ease 0s;
 `;
 
 const PageCount = styled.div`
@@ -114,7 +116,7 @@ class NavButtons extends React.Component {
     this.setState({ rightMouseHover: true });
   }
 
-  handleRightMouseLeave() {
+  handleRightMouseLeave(e) {
     this.setState({ rightMouseHover: false });
   }
 
@@ -126,6 +128,7 @@ class NavButtons extends React.Component {
             {this.state.currentPage}
             {' '}
             /
+            {' '}
             {this.state.totalPages}
           </PageCount>
           <LeftButtonHover onClick={this.handleLeftClick} onMouseLeave={this.handleLeftMouseLeave}>
@@ -147,6 +150,7 @@ class NavButtons extends React.Component {
             {this.state.currentPage}
             {' '}
             /
+            {' '}
             {this.state.totalPages}
           </PageCount>
           <LeftButton onClick={this.handleLeftClick}>
@@ -168,6 +172,7 @@ class NavButtons extends React.Component {
           {this.state.currentPage}
           {' '}
           /
+          {' '}
           {this.state.totalPages}
         </PageCount>
         <LeftButton onClick={this.handleLeftClick} onMouseEnter={this.handleLeftMouseHover}>
