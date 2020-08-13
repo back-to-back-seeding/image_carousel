@@ -18,12 +18,12 @@ const Item = styled.li`
 const List = styled.ul`
   margin: inherit;
   display: flex;
-  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
   background-color: rgb(247, 247, 247);
   margin: 0;
+  overflow: hidden;
   padding 0;
 `;
 
@@ -34,6 +34,10 @@ const Carousel = (props) => (
         return (
           <Item>
             <Images image={listing} />
+            <Rating rating={listing} />
+            <Listing listing={listing} />
+            <Description description={listing} />
+            <NightlyRate rate={listing} />
           </Item>
         );
         // return <img src={listing.image} alt="" />

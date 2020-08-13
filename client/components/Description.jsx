@@ -5,8 +5,7 @@ import styled from 'styled-components';
 
 const Title = styled.div`
   background-color: rgb(247, 247, 247);
-  display: flex;
-  overflow: hidden;
+
 `;
 
 const Description = (props) => (
