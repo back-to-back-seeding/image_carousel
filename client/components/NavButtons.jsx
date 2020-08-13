@@ -49,16 +49,23 @@ class NavButtons extends React.Component {
       totalPages: 4,
     };
     this.handleRightClick = this.handleRightClick.bind(this);
+    this.handleLeftClick = this.handleLeftClick.bind(this);
   }
 
   handleRightClick() {
-    console.log('button clicked!');
     let curCount = this.state.currentPage;
     if (curCount === this.state.totalPages) {
-      console.log('do we hit this if?');
       this.setState({ currentPage: 1 });
     } else {
       curCount += 1;
+      this.setState({ currentPage: curCount });
+    }
+  }
+
+  handleLeftClick() {
+    let curCount = this.state.currentPage;
+    if (curCount !== 1) {
+      curCount -= 1;
       this.setState({ currentPage: curCount });
     }
   }
@@ -69,7 +76,7 @@ class NavButtons extends React.Component {
         <PageCount>
           {this.state.currentPage} / {this.state.totalPages}
         </PageCount>
-        <LeftButton>
+        <LeftButton onClick={this.handleLeftClick}>
           <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
             <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
           </svg>
