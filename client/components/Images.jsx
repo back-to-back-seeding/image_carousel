@@ -6,16 +6,11 @@ import styled from 'styled-components';
 const ListingImage = styled.img`
   background-color: inherit;
   border-radius: 1em;
-`;
-
-const Wrapper = styled.div`
-  background-color: rgb(247, 247, 247);
+  object/fit: cover
 `;
 
 const Images = (props) => (
-  <Wrapper>
-    <ListingImage src={props.image.image} />
-  </Wrapper>
+  <ListingImage src={props.image.image} />
 );
 
 export default Images;

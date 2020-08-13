@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import styled from 'styled-components';
 import Description from './Description.jsx';
@@ -8,10 +9,16 @@ import NightlyRate from './NightlyRate.jsx';
 import Rating from './Rating.jsx';
 
 const Item = styled.li`
+  background-color: rgb(247, 247, 247);
+  justify-direction: row:
+  margin: 0;
+  padding 0;
 `;
 
 const List = styled.ul`
   margin: inherit;
+  display: flex;
+  overflow: hidden;
 `;
 
 const Wrapper = styled.div`
@@ -23,11 +30,14 @@ const Wrapper = styled.div`
 const Carousel = (props) => (
   <Wrapper>
     <List>
-      <Item>
-        {props.carousel.map((listing) => {
-          console.log(listing);
-        })}
-      </Item>
+      {props.carousel.map((listing) => {
+        return (
+          <Item>
+            <Images image={listing} />
+          </Item>
+        );
+        // return <img src={listing.image} alt="" />
+      })}
     </List>
   </Wrapper>
 );

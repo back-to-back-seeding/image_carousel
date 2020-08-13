@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const faker = require('faker');
 const Listing = require('./index.js');

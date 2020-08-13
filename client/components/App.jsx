@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
 import React from 'react';
@@ -35,12 +36,11 @@ class App extends React.Component {
   getListings() {
     axios.get('/suggestedListings')
       .then((response) => {
-        console.log('GET reqeust made');
         const suggestedListings = response.data;
         this.setState({ suggestedListings, isLoading: false });
       })
       .catch((error) => {
-        console.log('We have an error!');
+        console.log(error);
       });
   }
 
