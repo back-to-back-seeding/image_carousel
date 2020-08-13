@@ -29,7 +29,7 @@ const SpaceAvailable = styled.li`
 const Wrapper = styled.div`
   background-color: rgb(247, 247, 247);
   display: flex;
-  margin: 0;
+  margin: 1px;
   padding: 0;
 `;
 

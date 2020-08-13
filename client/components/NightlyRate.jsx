@@ -10,7 +10,7 @@ const PerNight = styled.span`
 const Rate = styled.div`
   background-color: rgb(247, 247, 247);
   display: flex;
-  margin: 0;
+  margin: 2.5px;
   padding: 0;
 `;
 

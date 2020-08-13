@@ -10,21 +10,23 @@ import Rating from './Rating.jsx';
 
 const Item = styled.li`
   background-color: rgb(247, 247, 247);
-  justify-direction: row:
-  margin: 0;
   padding 0;
+  margin: 10px;
 `;
 
 const List = styled.ul`
-  margin: inherit;
   display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: inherit;
 `;
 
 const Wrapper = styled.div`
   background-color: rgb(247, 247, 247);
-  margin: 0;
+  display: flex;
   overflow: hidden;
   padding 0;
+  max-width: inherit;
 `;
 
 const Carousel = (props) => (

@@ -4,8 +4,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Title = styled.div`
-  background-color: rgb(247, 247, 247);
-
+  margin: 2.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 275px;
 `;
 
 const Description = (props) => (

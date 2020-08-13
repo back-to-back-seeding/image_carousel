@@ -12,9 +12,27 @@ import NightlyRate from './NightlyRate.jsx';
 import Rating from './Rating.jsx';
 import Carousel from './Carousel.jsx';
 
-const Wrapper = styled.div`
+const InnerWrapper = styled.div`
+  background-color: inherit;
+  display: block;
+  height: 100%;
+  max-width: 1120px;
+  width: 100%;
+`;
+
+const MiddleWrapper = styled.div`
+  background-color: inherit;
+  display: block;
+  padding-left: 80px;
+  padding-right: 80px;
+`;
+
+const OuterWrapper = styled.div`
+  background-color: rgb(247, 247, 247);
+  display: block;
   margin: 0;
-  padding: 0;
+  padding-bottom: 40px;
+  padding-top: 40px;
 `;
 
 class App extends React.Component {
@@ -49,16 +67,12 @@ class App extends React.Component {
       return (<div> . . .</div>);
     }
     return (
-      <Wrapper>
-        <Header />
-        <Carousel carousel={this.state.suggestedListings} />
-        {/*
-        <Images image={this.state.suggestedListings[0]} />
-        <Rating rating={this.state.suggestedListings[0]} />
-        <Listing listing={this.state.suggestedListings[0]} />
-        <Description description={this.state.suggestedListings[0]} />
-        <NightlyRate rate={this.state.suggestedListings[0]} /> */}
-      </Wrapper>
+      <OuterWrapper>
+        <MiddleWrapper>
+          <Header />
+          <Carousel carousel={this.state.suggestedListings} />
+        </MiddleWrapper>
+      </OuterWrapper>
     );
   }
 }

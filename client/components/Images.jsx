@@ -5,12 +5,16 @@ import styled from 'styled-components';
 
 const ListingImage = styled.img`
   background-color: inherit;
+  background-size: cover;
   border-radius: 1em;
-  object/fit: cover
+  height: 200px;
+  margin-bottom: 5px;
+  object-fit: cover;
+  width: 280px;
 `;
 
 const Images = (props) => (
-  <ListingImage src={props.image.image} />
+  <ListingImage alt="" src={props.image.image} />
 );
 
 export default Images;
