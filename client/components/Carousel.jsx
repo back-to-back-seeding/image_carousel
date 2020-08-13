@@ -24,14 +24,17 @@ const Carousel = (props) => (
   <Wrapper>
     <List>
       <Item>
-        <Images image={props.carousel[0]} />
-        <Rating rating={props.carousel[0]} />
-        <Listing listing={props.carousel[0]} />
-        <Description description={props.carousel[0]} />
-        <NightlyRate rate={props.carousel[0]} />
+        {props.carousel.map((listing) => {
+          console.log(listing);
+        })}
       </Item>
     </List>
   </Wrapper>
 );
 
 export default Carousel;
+// <Images image={props.carousel[0]} />
+// <Rating rating={props.carousel[0]} />
+// <Listing listing={props.carousel[0]} />
+// <Description description={props.carousel[0]} />
+// <NightlyRate rate={props.carousel[0]} />

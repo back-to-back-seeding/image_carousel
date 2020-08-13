@@ -37,8 +37,6 @@ class App extends React.Component {
       .then((response) => {
         console.log('GET reqeust made');
         const suggestedListings = response.data;
-
-        console.log(response.data.slice(0, 12));
         this.setState({ suggestedListings, isLoading: false });
       })
       .catch((error) => {
