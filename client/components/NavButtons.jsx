@@ -40,20 +40,31 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const NavButtons = () => (
-  <Wrapper>
-    <PageCount>1 / 4</PageCount>
-    <LeftButton>
-      <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
-        <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
-      </svg>
-    </LeftButton>
-    <RightButton>
-      <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
-        <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
-      </svg>
-    </RightButton>
-  </Wrapper>
-);
+class NavButtons extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 1,
+    };
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        <PageCount>1 / 4</PageCount>
+        <LeftButton>
+          <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
+            <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
+          </svg>
+        </LeftButton>
+        <RightButton>
+          <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
+            <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
+          </svg>
+        </RightButton>
+      </Wrapper>
+    );
+  }
+}
 
 export default NavButtons;
