@@ -9,6 +9,7 @@ import Images from './Images.jsx';
 import Listing from './Listing.jsx';
 import NightlyRate from './NightlyRate.jsx';
 import Rating from './Rating.jsx';
+import Carousel from './Carousel.jsx';
 
 const Wrapper = styled.div`
   margin: 0;
@@ -52,11 +53,13 @@ class App extends React.Component {
     return (
       <Wrapper>
         <Header />
+        <Carousel carousel={this.state.suggestedListings} />
+        {/*
         <Images image={this.state.suggestedListings[0]} />
         <Rating rating={this.state.suggestedListings[0]} />
         <Listing listing={this.state.suggestedListings[0]} />
         <Description description={this.state.suggestedListings[0]} />
-        <NightlyRate rate={this.state.suggestedListings[0]} />
+        <NightlyRate rate={this.state.suggestedListings[0]} /> */}
       </Wrapper>
     );
   }

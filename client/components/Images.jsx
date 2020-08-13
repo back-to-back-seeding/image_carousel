@@ -14,7 +14,6 @@ const Wrapper = styled.div`
 
 const Images = (props) => (
   <Wrapper>
-    {console.log(props.image.image)}
     <ListingImage src={props.image.image} />
   </Wrapper>
 );
