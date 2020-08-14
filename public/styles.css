@@ -1,6 +1,6 @@
-* {
+/* * {
   padding: 0;
-  margin: 3;
+  margin: 0;
 }
 
 body {
@@ -86,4 +86,4 @@ ol li{
 
 .title {
   overflow: hidden;
-}
+} */

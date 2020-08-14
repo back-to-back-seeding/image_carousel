@@ -7,10 +7,11 @@ const Title = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 275px;
+  max-width: 85%;
   font-weight: 400;
   font-size: 16px;
   max-height: 20px;
+  margin-bottom: 4px;
 `;
 
 const Description = (props) => (

@@ -10,7 +10,6 @@ const PerNight = styled.span`
 const Rate = styled.div`
   background-color: rgb(247, 247, 247);
   display: flex;
-  margin: 2.5px;
   padding: 0;
   font-weight: 400;
   font-size: 16px;

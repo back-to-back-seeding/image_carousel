@@ -41,7 +41,6 @@ const Listing = (props) => (
   <Wrapper>
     <List>
       <SpaceAvailable>{props.listing.title}</SpaceAvailable>
-      {/* <AmountOfSpace>1 Bed</AmountOfSpace> */}
     </List>
   </Wrapper>
 );

@@ -9,28 +9,26 @@ import NightlyRate from './NightlyRate.jsx';
 import Rating from './Rating.jsx';
 
 const Item = styled.li`
-  background-color: rgb(247, 247, 247);
-  padding 0;
-  margin: 0px 10px;
+  margin: 0px 2px;
   max-width: 25%;
-  flex-basis: 25%;
+  flex: 0 0 25%;
 `;
 
 const List = styled.ul`
   display: flex;
   justify-content: space-between;
   list-style-type: none;
-  margin-left: -10px;
-  margin-right: -10px;
-  width-max: 1280px;
+  margin: 0;
+  max-width: inherit;
+  overflow: hidden;
+  padding: 0;
 `;
 
 const Wrapper = styled.div`
   background-color: rgb(247, 247, 247);
   display: flex;
-  overflow: hidden;
   padding 0;
-  max-width: inherit;
+  max-width: 1120px;
 `;
 
 const Carousel = (props) => (
@@ -53,8 +51,3 @@ const Carousel = (props) => (
 );
 
 export default Carousel;
-// <Images image={props.carousel[0]} />
-// <Rating rating={props.carousel[0]} />
-// <Listing listing={props.carousel[0]} />
-// <Description description={props.carousel[0]} />
-// <NightlyRate rate={props.carousel[0]} />

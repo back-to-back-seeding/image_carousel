@@ -3,7 +3,6 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import styled from 'styled-components';
-import NavButtons from './NavButtons.jsx';
 
 const Heading = styled.h2`
   background-color: inherit;
@@ -20,21 +19,10 @@ const Section = styled.section`
   display: block;
 `;
 
-const Wrapper = styled.div`
-  align-items: center;
-  background-color: rgb(247, 247, 247);
-  display: flex;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-  justify-content: space-between;
-  padding-bottom: 14px;
-`;
-
-const Header = (props) => (
-  <Wrapper>
-    <Section>
-      <Heading>More places to stay</Heading>
-    </Section>
-  </Wrapper>
+const Header = () => (
+  <Section>
+    <Heading>More places to stay</Heading>
+  </Section>
 );
 
 export default Header;
