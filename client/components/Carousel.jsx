@@ -35,9 +35,10 @@ const Carousel = (props) => (
   <Wrapper>
     <List>
       {props.carousel.map((listing) => {
+        console.log(listing.superhost);
         return (
           <Item>
-            <Images image={listing} />
+            <Images graphics={listing} />
             <Rating rating={listing} />
             <Listing listing={listing} />
             <Description description={listing} />
