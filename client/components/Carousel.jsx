@@ -11,14 +11,18 @@ import Rating from './Rating.jsx';
 const Item = styled.li`
   background-color: rgb(247, 247, 247);
   padding 0;
-  margin: 10px;
+  margin: 0px 10px;
+  max-width: 25%;
+  flex-basis: 25%;
 `;
 
 const List = styled.ul`
   display: flex;
   justify-content: space-between;
   list-style-type: none;
-  margin: inherit;
+  margin-left: -10px;
+  margin-right: -10px;
+  width-max: 1280px;
 `;
 
 const Wrapper = styled.div`

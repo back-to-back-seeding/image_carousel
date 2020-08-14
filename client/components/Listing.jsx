@@ -27,9 +27,13 @@ const SpaceAvailable = styled.li`
 `;
 
 const Wrapper = styled.div`
+  color: rgb(34, 34, 34);
   background-color: rgb(247, 247, 247);
   display: flex;
-  margin: 1px;
+  font-weight: 400;
+  font-size: 16px;
+  max-height: 20px;
+  margin-bottom: 2px;
   padding: 0;
 `;
 

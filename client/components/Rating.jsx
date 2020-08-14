@@ -51,7 +51,7 @@ const Rating = (props) => (
         ({props.rating.numberOfRatings})
       </NumOfComments>
     </InnerWrapper>
-  </OuterWrapper >
+  </OuterWrapper>
 );
 
 export default Rating;

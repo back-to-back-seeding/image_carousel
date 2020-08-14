@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   display: flex;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   justify-content: space-between;
-  padding-bottom: 24px;
+  padding-bottom: 14px;
 `;
 
 const Header = () => (

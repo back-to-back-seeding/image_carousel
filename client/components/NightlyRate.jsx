@@ -12,6 +12,9 @@ const Rate = styled.div`
   display: flex;
   margin: 2.5px;
   padding: 0;
+  font-weight: 400;
+  font-size: 16px;
+  max-height: 20px;
 `;
 
 const NightlyRate = (props) => (
