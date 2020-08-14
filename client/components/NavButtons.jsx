@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -74,7 +77,7 @@ class NavButtons extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      totalPages: 4,
+      totalPages: 3,
       leftMouseHover: false,
       rightMouseHover: false,
     };
@@ -84,15 +87,23 @@ class NavButtons extends React.Component {
     this.handleLeftMouseLeave = this.handleLeftMouseLeave.bind(this);
     this.handleRightMouseHover = this.handleRightMouseHover.bind(this);
     this.handleRightMouseLeave = this.handleRightMouseLeave.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+  }
+
+  handlePageChange(count) {
+    this.props.renderPage(count);
   }
 
   handleRightClick() {
     let curCount = this.state.currentPage;
     if (curCount === this.state.totalPages) {
-      this.setState({ currentPage: 1 });
+      const resetState = 1;
+      this.setState({ currentPage: resetState });
+      this.handlePageChange(resetState);
     } else {
       curCount += 1;
       this.setState({ currentPage: curCount });
+      this.handlePageChange(curCount);
     }
   }
 
@@ -101,6 +112,7 @@ class NavButtons extends React.Component {
     if (curCount !== 1) {
       curCount -= 1;
       this.setState({ currentPage: curCount });
+      this.handlePageChange(curCount);
     }
   }
 
@@ -116,7 +128,7 @@ class NavButtons extends React.Component {
     this.setState({ rightMouseHover: true });
   }
 
-  handleRightMouseLeave(e) {
+  handleRightMouseLeave() {
     this.setState({ rightMouseHover: false });
   }
 
@@ -158,7 +170,7 @@ class NavButtons extends React.Component {
               <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
             </svg>
           </LeftButton>
-          <RightButtonHover onClick={this.handleRightClick} onMouseLeave={this.handleRightMouseLeave}>
+          <RightButtonHover onClick={() => { this.handleRightClick(); }} onMouseLeave={this.handleRightMouseLeave}>
             <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
               <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
             </svg>

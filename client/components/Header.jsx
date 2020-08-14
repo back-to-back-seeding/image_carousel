@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React from 'react';
 import styled from 'styled-components';
@@ -27,12 +29,11 @@ const Wrapper = styled.div`
   padding-bottom: 14px;
 `;
 
-const Header = () => (
+const Header = (props) => (
   <Wrapper>
     <Section>
       <Heading>More places to stay</Heading>
     </Section>
-    <NavButtons />
   </Wrapper>
 );
 

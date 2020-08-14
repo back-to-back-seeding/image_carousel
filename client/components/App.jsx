@@ -4,13 +4,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Description from './Description.jsx';
-import Header from './Header.jsx';
-import Images from './Images.jsx';
-import Listing from './Listing.jsx';
-import NightlyRate from './NightlyRate.jsx';
-import Rating from './Rating.jsx';
 import Carousel from './Carousel.jsx';
+import Header from './Header.jsx';
+import NavButtons from './NavButtons.jsx';
 
 const InnerWrapper = styled.div`
   background-color: inherit;
@@ -41,25 +37,39 @@ class App extends React.Component {
     this.state = {
       suggestedListings: [],
       isLoading: true,
+      renderedListings: [],
     };
     this.getListings = this.getListings.bind(this);
+    this.renderPage = this.renderPage.bind(this);
   }
 
   componentDidMount() {
     this.getListings();
   }
 
-  // TODO try to figure out why the db keeps automatically adding data to db
-  // eslint-disable-next-line class-methods-use-this
   getListings() {
     axios.get('/suggestedListings')
       .then((response) => {
         const suggestedListings = response.data;
         this.setState({ suggestedListings, isLoading: false });
+        this.renderPage(1);
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  renderPage(page) {
+    if (page === 1) {
+      const firstPage = this.state.suggestedListings.slice(0, 4);
+      this.setState({ renderedListings: firstPage });
+    } else if (page === 2) {
+      const secondPage = this.state.suggestedListings.slice(4, 8);
+      this.setState({ renderedListings: secondPage });
+    } else if (page === 3) {
+      const thirdPage = this.state.suggestedListings.slice(8, 12);
+      this.setState({ renderedListings: thirdPage });
+    }
   }
 
   render() {
@@ -70,7 +80,8 @@ class App extends React.Component {
       <OuterWrapper>
         <MiddleWrapper>
           <Header />
-          <Carousel carousel={this.state.suggestedListings} />
+          <NavButtons renderPage={this.renderPage} />
+          <Carousel carousel={this.state.renderedListings} />
         </MiddleWrapper>
       </OuterWrapper>
     );
