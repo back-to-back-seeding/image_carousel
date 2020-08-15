@@ -3,6 +3,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const InnerHeartWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  width: 240px;
+  padding: 8px;
+`;
+
 const InnerWrapper = styled.div`
   position: absolute;
   display: flex;
@@ -43,8 +51,7 @@ const SuperhostWrapper = styled.div`
 `;
 
 const HeartWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  display: inherit;
 `;
 
 const Heart = styled.button`
@@ -76,11 +83,11 @@ class Images extends React.Component {
     }
     return (
       <OuterWrapper>
-        <InnerWrapper>
+        <InnerHeartWrapper>
           <HeartWrapper>
             Sup?
           </HeartWrapper>
-        </InnerWrapper>
+        </InnerHeartWrapper>
         <ListingImage alt="" src={this.props.graphics.image} />
       </OuterWrapper>
     );
