@@ -24,6 +24,7 @@ const RightButtonHover = styled.button`
   border-style: solid;
   border-width: 1px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
   height: 35px;
   margin: 0px;
   outline: none;
@@ -51,6 +52,7 @@ const LeftButtonHover = styled.button`
   border-style: solid;
   border-width: 1px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
   height: 35px;
   margin-right: 12px;
   outline: none;

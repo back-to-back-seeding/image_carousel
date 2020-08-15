@@ -2,12 +2,13 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import styled from 'styled-components';
+import Heart from './Heart.jsx';
 
 const InnerHeartWrapper = styled.div`
   position: absolute;
   display: flex;
   justify-content: flex-end;
-  width: 240px;
+  width: 250px;
   padding: 8px;
 `;
 
@@ -15,7 +16,7 @@ const InnerWrapper = styled.div`
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 240px;
+  width: 250px;
   padding: 8px;
 `;
 
@@ -54,10 +55,6 @@ const HeartWrapper = styled.div`
   display: inherit;
 `;
 
-const Heart = styled.button`
-
-`;
-
 class Images extends React.Component {
   constructor(props) {
     super(props);
@@ -73,9 +70,7 @@ class Images extends React.Component {
             <SuperhostWrapper>
               SUPERHOST
             </SuperhostWrapper>
-            <HeartWrapper>
-              Sup?
-            </HeartWrapper>
+            <Heart />
           </InnerWrapper>
           <ListingImage alt="" src={this.props.graphics.image} />
         </OuterWrapper>
@@ -84,9 +79,7 @@ class Images extends React.Component {
     return (
       <OuterWrapper>
         <InnerHeartWrapper>
-          <HeartWrapper>
-            Sup?
-          </HeartWrapper>
+          <Heart />
         </InnerHeartWrapper>
         <ListingImage alt="" src={this.props.graphics.image} />
       </OuterWrapper>
