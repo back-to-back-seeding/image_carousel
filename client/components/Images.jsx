@@ -39,6 +39,7 @@ const OuterWrapper = styled.div`
 
 const SuperhostWrapper = styled.div`
   display: flex;
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.95);
   border: 0.5px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
