@@ -16,7 +16,7 @@ const createListing = () => {
       rate: helpers.setRandomRate(),
       avgRating: helpers.setRandomAvgRating(),
       numberOfRatings: helpers.setRandomNumOfRatings(),
-      previosulySaved: faker.fake('{{random.boolean}}'),
+      wasLiked: faker.fake('{{random.boolean}}'),
       superhost: faker.fake('{{random.boolean}}'),
     };
     const newListing = new Listing(newListingObj);

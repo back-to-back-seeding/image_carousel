@@ -71,7 +71,7 @@ class Images extends React.Component {
             <SuperhostWrapper>
               SUPERHOST
             </SuperhostWrapper>
-            <Heart />
+            <Heart heart={this.props.graphics} modal={this.props.modal} />
           </InnerWrapper>
           <ListingImage alt="" src={this.props.graphics.image} />
         </OuterWrapper>
@@ -80,7 +80,7 @@ class Images extends React.Component {
     return (
       <OuterWrapper>
         <InnerHeartWrapper>
-          <Heart />
+          <Heart heart={this.props.graphics} modal={this.props.modal} />
         </InnerHeartWrapper>
         <ListingImage alt="" src={this.props.graphics.image} />
       </OuterWrapper>

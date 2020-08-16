@@ -15,6 +15,9 @@ const RightButton = styled.button`
   margin: 0px;
   outline: none;
   width: 35px;
+  :hover{
+    transition: box-shadow 0.2s ease 0s;
+  }
 `;
 // TODO figure out why transitions aren't working...
 const RightButtonHover = styled.button`
@@ -44,6 +47,7 @@ const LeftButton = styled.button`
   outline: none;
   width: 35px;
 `;
+
 // TODO figure out why transitions aren't rendering
 const LeftButtonHover = styled.button`
   background-color: blue;

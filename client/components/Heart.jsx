@@ -31,14 +31,23 @@ class Heart extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
   }
+  // pass function to handle click whne ths button is clicks
+  // this function whould have to inform the app that the state has changed...
+  // so what is this function we write just changes some state in the app...
+  // and this state change triggers the modal to appear!
 
   handleClick() {
-    if (this.state.isLiked) {
-      this.setState({ isLiked: false });
-    } else {
-      this.setState({ isLiked: true });
-    }
+    { this.props.modal() }
+    // if (!this.state.isLiked) {
+    //   {this.props.modal()}
+    //   // this.setState({ isLiked: false });
+    //   // console.log(this.props.modal);
+    // } else {
+    //   this.setState({ isLiked: true });
+    //   // console.log(this.props.modal);
+    // }
   }
+  // this.props.heart.wasLiked
 
   render() {
     if (this.state.isLiked) {

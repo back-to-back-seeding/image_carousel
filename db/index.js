@@ -14,7 +14,7 @@ const listingSchema = new mongoose.Schema({
   rate: Number,
   avgRating: Number,
   numberOfRatings: Number,
-  previouslySaved: Boolean,
+  wasLiked: Boolean,
   superhost: Boolean,
 });
 

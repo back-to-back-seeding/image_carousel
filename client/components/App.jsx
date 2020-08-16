@@ -7,6 +7,7 @@ import axios from 'axios';
 import Carousel from './Carousel.jsx';
 import Header from './Header.jsx';
 import NavButtons from './NavButtons.jsx';
+import Modal from './Modal.jsx';
 
 const HeadingWrapper = styled.div`
   align-items: center;
@@ -53,9 +54,12 @@ class App extends React.Component {
       suggestedListings: [],
       isLoading: true,
       renderedListings: [],
+      modalTriggered: false,
     };
     this.getListings = this.getListings.bind(this);
     this.renderPage = this.renderPage.bind(this);
+    this.renderModal = this.renderModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   componentDidMount() {
@@ -75,6 +79,14 @@ class App extends React.Component {
       });
   }
 
+  hideModal() {
+    this.setState({ modalTriggered: false });
+  }
+
+  renderModal() {
+    this.setState({ modalTriggered: true });
+  }
+
   renderPage(page) {
     if (page === 1) {
       const firstPage = this.state.suggestedListings.slice(0, 4);
@@ -92,6 +104,22 @@ class App extends React.Component {
     if (this.state.isLoading) {
       return (<div> . . .</div>);
     }
+    if (this.state.modalTriggered) {
+      return (
+        <OuterDiv>
+          <Modal hideModal={this.hideModal} />
+          <OuterWrapper>
+            <MiddleWrapper>
+              <HeadingWrapper>
+                <Header />
+                <NavButtons renderPage={this.renderPage} />
+              </HeadingWrapper>
+              <Carousel carousel={this.state.renderedListings} modal={this.renderModal} />
+            </MiddleWrapper>
+          </OuterWrapper>
+        </OuterDiv>
+      );
+    }
     return (
       <OuterDiv>
         <OuterWrapper>
@@ -100,7 +128,7 @@ class App extends React.Component {
               <Header />
               <NavButtons renderPage={this.renderPage} />
             </HeadingWrapper>
-            <Carousel carousel={this.state.renderedListings} />
+            <Carousel carousel={this.state.renderedListings} modal={this.renderModal} />
           </MiddleWrapper>
         </OuterWrapper>
       </OuterDiv>
