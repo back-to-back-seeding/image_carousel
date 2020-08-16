@@ -66,6 +66,25 @@ const CreateAList = styled.button`
   }
 `;
 
+const CreateAListTriggered = styled.button`
+  display: block;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  background: rgb(34, 34, 34);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  line-height: 20px;
+  padding: 10px;
+  width: 100%;
+  outline: none;
+  :hover{
+    background: black;
+  }
+`;
+
 const FormContainer = styled.div`
   display: block;
   padding: 32px 16px;
@@ -136,9 +155,16 @@ class Form extends React.Component {
     super(props);
     this.state = {
       inputTriggered: false,
+      value: '',
     };
     this.handleClick = this.handleClick.bind(this);
     this.exitInput = this.exitInput.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    console.log(event.target.value);
+    this.setState({ value: event.target.value });
   }
 
   exitInput() {
@@ -175,11 +201,17 @@ class Form extends React.Component {
                   <Name>Name</Name>
                 </NameContainer>
               )}
-            <Input type="text" onClick={this.handleClick} />
+            <Input type="text" value={this.state.value} onClick={this.handleClick} onChange={this.handleChange} />
           </InputContainer>
         </FormContainer>
         <Footer>
-          <CreateAList>Create</CreateAList>
+          {this.state.value.length > 0
+            ? (
+              <CreateAListTriggered>Create</CreateAListTriggered>
+            )
+            : (
+              <CreateAList>Create</CreateAList>
+            )}
         </Footer>
       </NameThisList>
     );
