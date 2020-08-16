@@ -31,6 +31,7 @@ const MiddleWrapper = styled.div`
 `;
 
 const OuterDiv = styled.div`
+  display: flex;
   background-color: rgb(247, 247, 247);
   border-bottom: 1px solid rgb(221, 221, 221);
   display: block;

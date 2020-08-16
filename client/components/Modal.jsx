@@ -86,7 +86,8 @@ const List = styled.div`
 `;
 
 const ModalContainer = styled.div`
-  align-items: flex-end;
+  display: flex;
+  align-items: center;
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px;
@@ -100,6 +101,22 @@ const ModalContainer = styled.div`
   position: fixed;
   width: 100%;
   z-index: 2;
+`;
+
+const OuterContainer = styled.div`
+  align-items: center;
+  display: flex;
+  padding: 40px;
+  z-index: 2;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  padding-top: 12px;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgba(72, 72, 72, 0.75);
 `;
 
 class Modal extends React.Component {
@@ -123,33 +140,37 @@ class Modal extends React.Component {
   render() {
     if (this.state.formTriggered) {
       return (
-        <ModalContainer>
-          <Form hideForm={this.hideForm} />
-        </ModalContainer>
+        <OuterContainer>
+          <ModalContainer>
+            <Form hideForm={this.hideForm} />
+          </ModalContainer>
+        </OuterContainer>
       );
     }
     return (
-      <ModalContainer>
-        <SaveToAList>
-          <Header>
-            <ExitButton onClick={this.props.hideModal}>
-              <svg aria-hidden="true" role="presentation" focusable="false" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ height: 16, width: 16 }}>
-                <path d="m6 6 20 20" />
-                <path d="m26 6-20 20" />
-              </svg>
-            </ExitButton>
-            <Heading>Save to a List</Heading>
-            <DummyDiv />
-          </Header>
-          <ListContainer>
-            <List>Im a List, Hear me Roar!</List>
-            <List>Anotha One</List>
-          </ListContainer>
-          <Footer>
-            <CreateList type="button" onClick={this.handleClick}>Create a list</CreateList>
-          </Footer>
-        </SaveToAList>
-      </ModalContainer>
+      <OuterContainer>
+        <ModalContainer>
+          <SaveToAList>
+            <Header>
+              <ExitButton onClick={this.props.hideModal}>
+                <svg aria-hidden="true" role="presentation" focusable="false" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style={{ height: 16, width: 16 }}>
+                  <path d="m6 6 20 20" />
+                  <path d="m26 6-20 20" />
+                </svg>
+              </ExitButton>
+              <Heading>Save to a List</Heading>
+              <DummyDiv />
+            </Header>
+            <ListContainer>
+              <List>Im a List, Hear me Roar!</List>
+              <List>Anotha One</List>
+            </ListContainer>
+            <Footer>
+              <CreateList type="button" onClick={this.handleClick}>Create a list</CreateList>
+            </Footer>
+          </SaveToAList>
+        </ModalContainer>
+      </OuterContainer>
     );
   }
 }
