@@ -15,6 +15,9 @@ const ExitButton = styled.button`
   overflow: visible;
   stroke: currentcolor;
   stroke-width: 3;
+  :hover {
+    background-color: rgb(247, 247, 247)
+  }
 `;
 
 const CreateList = styled.button`
@@ -94,10 +97,28 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      formTriggered: false,
     };
+    this.handleClick = this.handleClick.bind(this);
+    this.hideForm = this.hideForm.bind(this);
+  }
+
+  hideForm() {
+    this.setState({ formTriggered: false });
+  }
+
+  handleClick() {
+    this.setState({ formTriggered: true });
   }
 
   render() {
+    if (this.state.formTriggered) {
+      return (
+        <ModalContainer>
+          <Form hideForm={this.hideForm} />
+        </ModalContainer>
+      );
+    }
     return (
       <ModalContainer>
         <SaveToAList>
@@ -116,11 +137,11 @@ class Modal extends React.Component {
             <List>Anotha One</List>
           </ListContainer>
           <Footer>
-            <CreateList type="button" onClick={<Form />}>Create a list</CreateList>
+            <CreateList type="button" onClick={this.handleClick}>Create a list</CreateList>
           </Footer>
         </SaveToAList>
       </ModalContainer>
-    )
+    );
   }
 }
 
