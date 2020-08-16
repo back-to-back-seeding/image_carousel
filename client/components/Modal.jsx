@@ -67,6 +67,9 @@ const Footer = styled.div`
 
 const SaveToAList = styled.div`
   display: block;
+  width: 100%;
+  max-width: 568px;
+  border-radius: 12px;
 `;
 
 const ListContainer = styled.div`
@@ -83,14 +86,20 @@ const List = styled.div`
 `;
 
 const ModalContainer = styled.div`
+  align-items: flex-end;
   background-color: rgb(255, 255, 255);
+  border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px;
   color: #484848;
-  height: 100%;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
   font: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  justify-content: center;
   max-width: 568px;
-  border-radius: 12px;
+  padding-top: 12px;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
 `;
 
 class Modal extends React.Component {

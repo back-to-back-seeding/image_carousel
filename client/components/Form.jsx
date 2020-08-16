@@ -26,6 +26,7 @@ const Heading = styled.h1`
 
 const NameThisList = styled.div`
   display: block;
+  width: 100%;
 `;
 
 const Header = styled.div`
@@ -33,7 +34,7 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgb(235, 235, 235);
-  min-height: 64px;
+  min-height: 50px;
   padding: 0px 24px;
   border-bottom: 1px solid rgb(235, 235, 235);
 `;
@@ -57,7 +58,7 @@ const CreateAList = styled.button`
   font-size: 16px;
   font-weight: 600;
   color: rgb(255, 255, 255);
-  line-height: 20px;
+  line-height: 34px;
   padding: 10px;
   width: 100%;
   outline: none;
@@ -76,7 +77,7 @@ const CreateAListTriggered = styled.button`
   font-size: 16px;
   font-weight: 600;
   color: rgb(255, 255, 255);
-  line-height: 20px;
+  line-height: 34px;
   padding: 10px;
   width: 100%;
   outline: none;
@@ -87,6 +88,7 @@ const CreateAListTriggered = styled.button`
 
 const FormContainer = styled.div`
   display: block;
+  width: 94%;
   padding: 32px 16px;
 `;
 
@@ -174,7 +176,6 @@ class Form extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({ value: event.target.value });
   }
 
