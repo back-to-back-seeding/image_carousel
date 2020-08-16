@@ -142,12 +142,23 @@ const Name = styled.div`
 `;
 
 const NameContainer = styled.div`
+
   color: rgb(113, 113, 113)
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
   position: absolute;
+`;
+
+const Minimum = styled.div`
+  color: rgb(113, 113, 113);
+  display: flex;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  padding-top: 8px;
 `;
 
 class Form extends React.Component {
@@ -201,8 +212,9 @@ class Form extends React.Component {
                   <Name>Name</Name>
                 </NameContainer>
               )}
-            <Input type="text" value={this.state.value} onClick={this.handleClick} onChange={this.handleChange} />
+            <Input type="text" maxlength="50" value={this.state.value} onClick={this.handleClick} onChange={this.handleChange} />
           </InputContainer>
+          <Minimum>50 characters maximum</Minimum>
         </FormContainer>
         <Footer>
           {this.state.value.length > 0
