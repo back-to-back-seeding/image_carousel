@@ -15,24 +15,10 @@ const RightButton = styled.button`
   margin: 0px;
   outline: none;
   width: 35px;
-  :hover{
+  :hover {
+    cursor: pointer;
     transition: box-shadow 0.2s ease 0s;
   }
-`;
-// TODO figure out why transitions aren't working...
-const RightButtonHover = styled.button`
-  background-color: blue;
-  border-color: rgba(0, 0, 0, 0.08);
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-  cursor: pointer;
-  height: 35px;
-  margin: 0px;
-  outline: none;
-  width: 35px;
-  transition: box-shadow 0.2s ease 0s;
 `;
 
 const LeftButton = styled.button`
@@ -46,22 +32,10 @@ const LeftButton = styled.button`
   margin-right: 12px;
   outline: none;
   width: 35px;
-`;
-
-// TODO figure out why transitions aren't rendering
-const LeftButtonHover = styled.button`
-  background-color: blue;
-  border-color: rgba(0, 0, 0, 0.08);
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-  cursor: pointer;
-  height: 35px;
-  margin-right: 12px;
-  outline: none;
-  width: 35px;
-  transition: box-shadow 0.2s ease 0s;
+  :hover {
+    cursor: pointer;
+    transition: box-shadow 0.2s ease 0s;
+  }
 `;
 
 const PageCount = styled.div`
@@ -82,15 +56,9 @@ class NavButtons extends React.Component {
     this.state = {
       currentPage: 1,
       totalPages: 3,
-      leftMouseHover: false,
-      rightMouseHover: false,
     };
     this.handleRightClick = this.handleRightClick.bind(this);
     this.handleLeftClick = this.handleLeftClick.bind(this);
-    this.handleLeftMouseHover = this.handleLeftMouseHover.bind(this);
-    this.handleLeftMouseLeave = this.handleLeftMouseLeave.bind(this);
-    this.handleRightMouseHover = this.handleRightMouseHover.bind(this);
-    this.handleRightMouseLeave = this.handleRightMouseLeave.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
   }
 
@@ -120,22 +88,6 @@ class NavButtons extends React.Component {
     }
   }
 
-  handleLeftMouseHover() {
-    this.setState({ leftMouseHover: true });
-  }
-
-  handleLeftMouseLeave() {
-    this.setState({ leftMouseHover: false });
-  }
-
-  handleRightMouseHover() {
-    this.setState({ rightMouseHover: true });
-  }
-
-  handleRightMouseLeave() {
-    this.setState({ rightMouseHover: false });
-  }
-
   render() {
     return (
       <Wrapper>
@@ -146,32 +98,17 @@ class NavButtons extends React.Component {
           {' '}
           {this.state.totalPages}
         </PageCount>
-        {this.state.leftMouseHover ? (
-          <LeftButtonHover onClick={this.handleLeftClick} onMouseLeave={this.handleLeftMouseLeave}>
-            <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
-              <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
-            </svg>
-          </LeftButtonHover>
-        ) : (
-            <LeftButton onClick={this.handleLeftClick} onMouseEnter={this.handleLeftMouseHover}>
-              <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
-                <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
-              </svg>
-            </LeftButton>
-          )}
-        {this.state.rightMouseHover ? (
-          <RightButtonHover onClick={() => { this.handleRightClick(); }} onMouseLeave={this.handleRightMouseLeave}>
-            <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
-              <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
-            </svg>
-          </RightButtonHover>
-        ) : (
-            <RightButton onClick={this.handleRightClick} onMouseEnter={this.handleRightMouseHover}>
-              <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
-                <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
-              </svg>
-            </RightButton>
-          )}
+        <LeftButton onClick={this.handleLeftClick} onMouseEnter={this.handleLeftMouseHover}>
+          <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
+            <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
+          </svg>
+        </LeftButton>
+        <RightButton onClick={this.handleRightClick} onMouseEnter={this.handleRightMouseHover}>
+          <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
+            <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
+          </svg>
+        </RightButton>
+        {/* )} */}
       </Wrapper>
     );
   }
