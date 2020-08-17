@@ -76,8 +76,6 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-// TODO => Come up with way to compute total number of pages based on number of listing in db
-// this will have to do with the number of listings we get in the response...
 class NavButtons extends React.Component {
   constructor(props) {
     super(props);
@@ -139,51 +137,6 @@ class NavButtons extends React.Component {
   }
 
   render() {
-    if (this.state.leftMouseHover) {
-      return (
-        <Wrapper>
-          <PageCount>
-            {this.state.currentPage}
-            {' '}
-            /
-            {' '}
-            {this.state.totalPages}
-          </PageCount>
-          <LeftButtonHover onClick={this.handleLeftClick} onMouseLeave={this.handleLeftMouseLeave}>
-            <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
-              <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
-            </svg>
-          </LeftButtonHover>
-          <RightButton onClick={this.handleRightClick}>
-            <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
-              <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
-            </svg>
-          </RightButton>
-        </Wrapper>
-      );
-    } if (this.state.rightMouseHover) {
-      return (
-        <Wrapper>
-          <PageCount>
-            {this.state.currentPage}
-            {' '}
-            /
-            {' '}
-            {this.state.totalPages}
-          </PageCount>
-          <LeftButton onClick={this.handleLeftClick}>
-            <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
-              <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
-            </svg>
-          </LeftButton>
-          <RightButtonHover onClick={() => { this.handleRightClick(); }} onMouseLeave={this.handleRightMouseLeave}>
-            <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
-              <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
-            </svg>
-          </RightButtonHover>
-        </Wrapper>
-      );
-    }
     return (
       <Wrapper>
         <PageCount>
@@ -193,16 +146,32 @@ class NavButtons extends React.Component {
           {' '}
           {this.state.totalPages}
         </PageCount>
-        <LeftButton onClick={this.handleLeftClick} onMouseEnter={this.handleLeftMouseHover}>
-          <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
-            <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
-          </svg>
-        </LeftButton>
-        <RightButton onClick={this.handleRightClick} onMouseEnter={this.handleRightMouseHover}>
-          <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
-            <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
-          </svg>
-        </RightButton>
+        {this.state.leftMouseHover ? (
+          <LeftButtonHover onClick={this.handleLeftClick} onMouseLeave={this.handleLeftMouseLeave}>
+            <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
+              <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
+            </svg>
+          </LeftButtonHover>
+        ) : (
+            <LeftButton onClick={this.handleLeftClick} onMouseEnter={this.handleLeftMouseHover}>
+              <svg viewBox="0 0 18 18" role="presentation" style={{ height: 10, width: 10 }}>
+                <path d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z" />
+              </svg>
+            </LeftButton>
+          )}
+        {this.state.rightMouseHover ? (
+          <RightButtonHover onClick={() => { this.handleRightClick(); }} onMouseLeave={this.handleRightMouseLeave}>
+            <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
+              <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
+            </svg>
+          </RightButtonHover>
+        ) : (
+            <RightButton onClick={this.handleRightClick} onMouseEnter={this.handleRightMouseHover}>
+              <svg viewBox="0 0 18 18" style={{ height: 10, width: 10 }}>
+                <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" />
+              </svg>
+            </RightButton>
+          )}
       </Wrapper>
     );
   }
