@@ -81,6 +81,10 @@ class NavButtons extends React.Component {
 
   handleLeftClick() {
     let curCount = this.state.currentPage;
+    if (curCount === 1) {
+      this.setState({ currentPage: this.state.totalPages });
+      this.handlePageChange(this.state.totalPages);
+    }
     if (curCount !== 1) {
       curCount -= 1;
       this.setState({ currentPage: curCount });
