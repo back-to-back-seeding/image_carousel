@@ -52,10 +52,6 @@ const SuperhostWrapper = styled.div`
   padding: 4px 8px;
 `;
 
-const HeartWrapper = styled.div`
-  display: inherit;
-`;
-
 class Images extends React.Component {
   constructor(props) {
     super(props);
@@ -64,24 +60,18 @@ class Images extends React.Component {
   }
 
   render() {
-    if (this.props.graphics.superhost) {
-      return (
-        <OuterWrapper>
-          <InnerWrapper>
+    return (
+      <OuterWrapper>
+        <InnerWrapper>
+          {this.props.graphics.superhost ? (
             <SuperhostWrapper>
               SUPERHOST
             </SuperhostWrapper>
-            <Heart heart={this.props.graphics} modal={this.props.modal} />
-          </InnerWrapper>
-          <ListingImage alt="" src={this.props.graphics.image} />
-        </OuterWrapper>
-      );
-    }
-    return (
-      <OuterWrapper>
-        <InnerHeartWrapper>
+          )
+            : null}
+          ;
           <Heart heart={this.props.graphics} modal={this.props.modal} />
-        </InnerHeartWrapper>
+        </InnerWrapper>
         <ListingImage alt="" src={this.props.graphics.image} />
       </OuterWrapper>
     );

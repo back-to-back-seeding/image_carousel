@@ -76,7 +76,7 @@ const ListContainer = styled.div`
   padding: 20px 16px;
 `;
 
-const List = styled.div`
+const ListItem = styled.div`
   padding: 20px 16px;
   cursor: pointer;
   border-radius: 12px;
@@ -162,8 +162,8 @@ class Modal extends React.Component {
               <DummyDiv />
             </Header>
             <ListContainer>
-              <List>Im a List, Hear me Roar!</List>
-              <List>Anotha One</List>
+              <ListItem>List Item</ListItem>
+              <ListItem>Anotha One</ListItem>
             </ListContainer>
             <Footer>
               <CreateList type="button" onClick={this.handleClick}>Create a list</CreateList>

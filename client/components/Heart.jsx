@@ -36,6 +36,10 @@ class Heart extends React.Component {
   // so what is this function we write just changes some state in the app...
   // and this state change triggers the modal to appear!
 
+  handleSubmit() {
+    this.setState({ isLiked: true });
+  }
+
   handleClick() {
     { this.props.modal() }
     // if (!this.state.isLiked) {
