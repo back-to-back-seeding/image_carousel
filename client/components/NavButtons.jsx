@@ -17,6 +17,7 @@ const RightButton = styled.button`
   width: 35px;
   :hover {
     cursor: pointer;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.18);
     transition: box-shadow 0.2s ease 0s;
   }
 `;
@@ -34,6 +35,7 @@ const LeftButton = styled.button`
   width: 35px;
   :hover {
     cursor: pointer;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.18);
     transition: box-shadow 0.2s ease 0s;
   }
 `;
@@ -44,7 +46,7 @@ const PageCount = styled.div`
   margin-right: 16px;
 `;
 
-const Wrapper = styled.div`
+const Container = styled.div`
   align-items: center;
   background-color: rgb(247, 247, 247);
   display: flex;
@@ -94,7 +96,7 @@ class NavButtons extends React.Component {
 
   render() {
     return (
-      <Wrapper>
+      <Container>
         <PageCount>
           {this.state.currentPage}
           {' '}
@@ -113,7 +115,7 @@ class NavButtons extends React.Component {
           </svg>
         </RightButton>
         {/* )} */}
-      </Wrapper>
+      </Container>
     );
   }
 }

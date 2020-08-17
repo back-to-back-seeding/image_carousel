@@ -111,7 +111,6 @@ class App extends React.Component {
           <Modal hideModal={this.hideModal} />
         )
           : null}
-        ;
         <OuterWrapper>
           <MiddleWrapper>
             <HeadingWrapper>
