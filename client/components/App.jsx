@@ -56,11 +56,13 @@ class App extends React.Component {
       isLoading: true,
       renderedListings: [],
       modalTriggered: false,
+      wasLiked: false,
     };
     this.getListings = this.getListings.bind(this);
     this.renderPage = this.renderPage.bind(this);
     this.renderModal = this.renderModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.renderLike = this.renderLike.bind(this);
   }
 
   componentDidMount() {
@@ -88,6 +90,10 @@ class App extends React.Component {
     this.setState({ modalTriggered: true });
   }
 
+  renderLike() {
+    this.setState({ wasLiked: true });
+  }
+
   renderPage(page) {
     if (page === 1) {
       const firstPage = this.state.suggestedListings.slice(0, 4);
@@ -108,7 +114,7 @@ class App extends React.Component {
     return (
       <OuterDiv>
         {this.state.modalTriggered ? (
-          <Modal hideModal={this.hideModal} />
+          <Modal hideModal={this.hideModal} renderLike={this.renderLike} />
         )
           : null}
         <OuterWrapper>
@@ -117,7 +123,11 @@ class App extends React.Component {
               <Header />
               <NavButtons renderPage={this.renderPage} />
             </HeadingWrapper>
-            <Carousel carousel={this.state.renderedListings} modal={this.renderModal} />
+            <Carousel
+              carousel={this.state.renderedListings}
+              modal={this.renderModal}
+              liked={this.state.wasLiked}
+            />
           </MiddleWrapper>
         </OuterWrapper>
       </OuterDiv>

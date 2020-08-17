@@ -220,7 +220,9 @@ class Form extends React.Component {
         <Footer>
           {this.state.value.length > 0
             ? (
-              <CreateAListTriggered>Create</CreateAListTriggered>
+              <CreateAListTriggered onClick={() => { this.props.renderLike(); }}>
+                Create
+              </CreateAListTriggered>
             )
             : (
               <CreateAList>Create</CreateAList>

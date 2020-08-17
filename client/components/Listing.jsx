@@ -3,14 +3,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// const AmountOfSpace = styled.li`
-//   background-color: inherit;
-//   display: inherit;
-//   font-size: 16px;
-//   margin: inherit;
-//   padding: inherit;
-// `;
-
 const List = styled.ol`
   background-color: inherit;
   display: inherit;

@@ -69,8 +69,11 @@ class Images extends React.Component {
             </SuperhostWrapper>
           )
             : null}
-          ;
-          <Heart heart={this.props.graphics} modal={this.props.modal} />
+          <Heart
+            heart={this.props.graphics}
+            modal={this.props.modal}
+            liked={this.props.liked}
+          />
         </InnerWrapper>
         <ListingImage alt="" src={this.props.graphics.image} />
       </OuterWrapper>

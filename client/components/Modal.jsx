@@ -8,6 +8,7 @@ const DummyDiv = styled.div`
 const ExitButton = styled.button`
   background-color: transparent;
   border: none;
+
   cursor: pointer;
   display: block;
   fill: none;
@@ -137,12 +138,12 @@ class Modal extends React.Component {
     this.setState({ formTriggered: true });
   }
 
-  render() {
+  render(props) {
     if (this.state.formTriggered) {
       return (
         <OuterContainer>
           <ModalContainer>
-            <Form hideForm={this.hideForm} />
+            <Form hideForm={this.hideForm} renderLike={this.props.renderLike} />
           </ModalContainer>
         </OuterContainer>
       );

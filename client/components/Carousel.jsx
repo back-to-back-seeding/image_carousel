@@ -39,7 +39,7 @@ const Carousel = (props) => (
         // console.log(props.modal);
         return (
           <Item>
-            <Images graphics={listing} modal={props.modal} />
+            <Images graphics={listing} modal={props.modal} liked={props.liked} />
             <Rating rating={listing} />
             <Listing listing={listing} />
             <Description description={listing} />
