@@ -105,24 +105,14 @@ class App extends React.Component {
     if (this.state.isLoading) {
       return (<div> . . .</div>);
     }
-    if (this.state.modalTriggered) {
-      return (
-        <OuterDiv>
-          <Modal hideModal={this.hideModal} />
-          <OuterWrapper>
-            <MiddleWrapper>
-              <HeadingWrapper>
-                <Header />
-                <NavButtons renderPage={this.renderPage} />
-              </HeadingWrapper>
-              <Carousel carousel={this.state.renderedListings} modal={this.renderModal} />
-            </MiddleWrapper>
-          </OuterWrapper>
-        </OuterDiv>
-      );
-    }
+    // if (this.state.modalTriggered) {
     return (
       <OuterDiv>
+        {this.state.modalTriggered ? (
+          <Modal hideModal={this.hideModal} />
+        )
+          : null}
+        ;
         <OuterWrapper>
           <MiddleWrapper>
             <HeadingWrapper>
@@ -134,6 +124,20 @@ class App extends React.Component {
         </OuterWrapper>
       </OuterDiv>
     );
+    // }
+    // return (
+    //   <OuterDiv>
+    //     <OuterWrapper>
+    //       <MiddleWrapper>
+    //         <HeadingWrapper>
+    //           <Header />
+    //           <NavButtons renderPage={this.renderPage} />
+    //         </HeadingWrapper>
+    //         <Carousel carousel={this.state.renderedListings} modal={this.renderModal} />
+    //       </MiddleWrapper>
+    //     </OuterWrapper>
+    //   </OuterDiv>
+    // );
   }
 }
 
