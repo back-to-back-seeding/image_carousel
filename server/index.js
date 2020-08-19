@@ -3,7 +3,7 @@ const path = require('path');
 const model = require('../db/model.js');
 
 const app = express();
-const PORT = 3500;
+const PORT = 3004;
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/suggestedListings', (req, res) => {
