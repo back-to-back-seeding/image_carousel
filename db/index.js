@@ -18,6 +18,11 @@ const listingSchema = new mongoose.Schema({
   superhost: Boolean,
 });
 
+const roomsSchema = new mongoose.Schema({
+  _id: Number,
+  rooms: Array,
+});
+
 const Listing = mongoose.model('Listing', listingSchema);
 
 module.exports = Listing;

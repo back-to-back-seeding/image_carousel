@@ -4,7 +4,7 @@ const model = require('../db/model.js');
 
 const app = express();
 const PORT = 3004;
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/rooms/:room_id', express.static(path.join(__dirname, '../public')));
 
 app.get('/suggestedListings', (req, res) => {
   console.log('get req working!');
