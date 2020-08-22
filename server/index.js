@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const model = require('../db/model.js');
+console.log('model hit!');
 
 const app = express();
 const PORT = 3004;
