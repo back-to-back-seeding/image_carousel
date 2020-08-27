@@ -8,6 +8,7 @@
   POST /places
   #### information will live in the body somewhere in JSON format: {"key1": value1, "key2": value2}
 
+  success status code: 201
 
 ```sh
   {
@@ -32,6 +33,7 @@
   GET /places/?id=500
   #### Get the place with id 500
 
+  success status code: 200
 ```sh
   {
     id: Number,
@@ -52,6 +54,8 @@
   UPDATE /places
   #### in the body somewhere in JSON format: {"key1": value1, "key2": value2}
 
+  success status code: 204
+
 ```sh
   {
     id: Number,
@@ -70,6 +74,8 @@
 
   /places/?id=#
   #### Delete by id number
+
+  success status code: 204
 
 ```sh
   {id : Number}

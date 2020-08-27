@@ -27,7 +27,7 @@ module.exports = {
       }
     });
   },
-  updateListing: (listing, callback) => {
+  putListing: (listing, callback) => {
     Listing.update(listing, (error, res) => {
       if (error) {
         console.log('cannot add to database');
