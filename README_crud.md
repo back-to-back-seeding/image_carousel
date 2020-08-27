@@ -4,7 +4,9 @@
 
 ## Create (POST Request)
 
-  /places/?id=#
+  POST /places
+  # information will live the body somewhere in JSON format: {"key1": value1, "key2": value2}
+
 
 ```sh
   {
@@ -19,10 +21,15 @@
     superhost: Boolean,
   }
 ```
+
 
 ## Read (GET Request)
 
-  /places/?id=#
+  GET /places
+  # Get all places
+
+  GET /places/?id=500
+  # Get the place with id 500
 
 ```sh
   {
@@ -37,9 +44,12 @@
     superhost: Boolean,
   }
 ```
+
+
 ## Update (PUT Request)
 
-  /places/?id=#
+  UPDATE /places
+  # in the body somewhere in JSON format: {"key1": value1, "key2": value2}
 
 ```sh
   {
@@ -58,6 +68,7 @@
 ## Delete (DELETE Request)
 
   /places/?id=#
+  # Delete by id number
 
 ```sh
   {id : Number}
