@@ -66,11 +66,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log("component did mount");
     this.getListings();
   }
 
   getListings() {
-    axios.get('/suggestedListings')
+    //http://localhost:3004
+    const queryID = window.location.search;
+    console.log('url parameter is ?id=#', queryID)
+    const url = '/places' + queryID;
+    axios.get(url)
       .then((response) => {
         const suggestedListings = response.data;
         console.log(suggestedListings);

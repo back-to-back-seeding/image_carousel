@@ -10,7 +10,8 @@
   "scripts": {
     "build": "webpack -d --watch",
     "test": "jest",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "seed": "node db/seeding.js"
   },
   "dependencies": {
     "axios": "^0.19.2",

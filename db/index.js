@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://database/suggestedListings', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/morePlaces', { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
@@ -8,6 +8,7 @@ db.once('open', () => {
 });
 
 const listingSchema = new mongoose.Schema({
+  id: Number,
   image: String,
   description: String,
   title: String,
