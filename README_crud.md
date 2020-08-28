@@ -5,79 +5,79 @@
 
 ## Create (POST Request)
 
+  #### expect request in body with JSON format
   POST /places
-  #### information will live in the body somewhere in JSON format: {"key1": value1, "key2": value2}
 
   success status code: 201
 
-```sh
+  post body for one new place:
+
+```js
   {
-    id: Number,
-    image: Array of strings,
-    description: String,
-    title: String,
-    rate: Number,
-    avgRating: Number,
-    numberOfRatings: Number,
-    wasLiked: Boolean,
-    superhost: Boolean,
+    id: "Number",
+    description: "String",
+    title: "String",
+    rate: "Number",
+    avgRating: "Number",
+    numberOfRatings: "Number",
+    saved: "Boolean",
+    superhost: "Boolean",
+    photo: "String",
+    morePlacesId: ["Number"]
   }
 ```
 
 
 ## Read (GET Request)
 
-  GET /places
-  #### Get all places
+  #### Get the place with id specified
+  GET /places/:placeId
 
-  GET /places/?id=500
-  #### Get the place with id 500
+  Path parameter: placeId
 
   success status code: 200
-```sh
+
+```js
   {
-    id: Number,
-    image: Array of strings,
-    description: String,
-    title: String,
-    rate: Number,
-    avgRating: Number,
-    numberOfRatings: Number,
-    wasLiked: Boolean,
-    superhost: Boolean,
+    id: "Number",
+    description: "String",
+    title: "String",
+    rate: "Number",
+    avgRating: "Number",
+    numberOfRatings: "Number",
+    saved: "Boolean",
+    superhost: "Boolean",
+    photo: "String",
+    morePlacesId: ["Number"]
   }
 ```
 
 
 ## Update (PUT Request)
 
-  UPDATE /places
-  #### in the body somewhere in JSON format: {"key1": value1, "key2": value2}
+  #### expect request in body with JSON format
+  UPDATE /places/:placeId
+
+  Path parameter: placeId
 
   success status code: 204
 
-```sh
+```js
   {
-    id: Number,
-    image: Array of strings,
-    description: String,
-    title: String,
-    rate: Number,
-    avgRating: Number,
-    numberOfRatings: Number,
-    wasLiked: Boolean,
-    superhost: Boolean,
+    photo: "String",
+    description: "String",
+    title: "String",
+    rate: "Number",
   }
 ```
 
 ## Delete (DELETE Request)
 
-  /places/?id=#
-  #### Delete by id number
+  #### Delete by id number as path parameter
+  /places/:placeId
+
+  Path parameter: placeId
 
   success status code: 204
 
-```sh
-  {id : Number}
-```
 
