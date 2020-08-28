@@ -6,7 +6,7 @@
 ## Create (POST Request)
 
   #### expect request in body with JSON format
-  POST /places
+  POST ```/places```js
 
   success status code: 201
 
