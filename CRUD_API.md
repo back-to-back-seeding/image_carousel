@@ -1,7 +1,7 @@
 # CRUD API Routes
 
 
-## Create a new place (POST Request) -
+## Create a new place (POST Request)
 
   #### expect request in body with JSON format
   POST ```/places```
