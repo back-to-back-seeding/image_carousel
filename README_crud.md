@@ -1,12 +1,10 @@
 # CRUD API Routes
 
-> API routes and data shapes
 
-
-## Create (POST Request)
+## Create a new place (POST Request) -
 
   #### expect request in body with JSON format
-  POST ```/places```js
+  POST ```/places```
 
   success status code: 201
 
@@ -28,12 +26,12 @@
 ```
 
 
-## Read (GET Request)
+## Read an existing place (GET Request)
 
   #### Get the place with id specified
-  GET /places/:placeId
+  GET ```/places/:placeId```
 
-  Path parameter: placeId
+  Path parameter: ```placeId```
 
   success status code: 200
 
@@ -53,12 +51,12 @@
 ```
 
 
-## Update (PUT Request)
+## Update an existing place (PUT Request)
 
   #### expect request in body with JSON format
-  UPDATE /places/:placeId
+  UPDATE  ```/places/:placeId```
 
-  Path parameter: placeId
+  Path parameter: ```placeId```
 
   success status code: 204
 
@@ -71,12 +69,12 @@
   }
 ```
 
-## Delete (DELETE Request)
+## Delete an existing place (DELETE Request)
 
   #### Delete by id number as path parameter
-  /places/:placeId
+  DELETE ```/places/:placeId```
 
-  Path parameter: placeId
+  Path parameter: ```placeId```
 
   success status code: 204
 
