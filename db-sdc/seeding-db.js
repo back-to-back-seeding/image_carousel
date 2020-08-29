@@ -4,7 +4,7 @@ const fs = require('fs');
 
 //PLACES DATA GENERATION
 const placeId;
-const rating = [4.55, 4.78, 3.9, 4.20, 4.55, 3.8, 5.0];
+const rating = [4.55, 4.78, 3.9, 4.20, 4.55, 5.0];
 const numOfReviews = [238, 150, 23, 16, 5, 39, 303];
 const title = ['Port House Shibuya', 'Posh Tsukiji', 'sakura - standard pod', 'T-ROOMS near Ginza'];
 const description = ['Newly built in 2020', 'long term stay', '6 min to Minowa station', 'ZEN loge 5 bedrooms', '4 min Nihonbashi', 'Namba Hara apartment 45'];
@@ -19,56 +19,62 @@ const photo = ["https://5erflies.s3-us-west-1.amazonaws.com/Trinita/0e5d88c8-969
 const morePlacesId += placeId;
 
 const seedPlaces = (entries) => {
-  let dataStr = 'id reviews: ';
-  for (let i = 1; i < entries; i++) {
+  for (let i = 0; i < entries; i++) {
     const placesInfo = {
-      placeId
+      placeId: i + 1,
+      rating: `${rating[i%6]}`,
+      numOfReviews: `${numOfReviews[i%7]}`,
+      title: `${title[i%4]}`,
+      description: `${description[i%6]}`,
+      rates: `${rates[i%7]}`,
+      superHost: `${superHost[i%2]}`,
+      photo: `${photo[i%6]}`
     }
-    dataStr += `\n`;
   }
   return new Promise((resolve, reject) => {
-    fs.writeFile('mongo-places.txt', placesInfo, (err) => {
+    fs.writeFile('mongo-places.txt', JSON.stringify(placesInfo), (err) => {
       if (err) {
         reject (err);
       } else {
-        resolve (dataStr);
+        resolve (dataObj);
       }
     });
   });
 }
 
-seedPlaces(1000)
+seedPlaces(100)
   .then(() => {console.log('success seeding places')})
   .catch(() => {console.log('failed seeding places')});
 
 
+//-------+-------+-------+-------+-------+-------+-------+-------+-------+
 //USERS DATA GENERATION
 const userId = [1, 2, 3, 4, 5, 6, 7];
 const savedlist = {
-  foler: 'la trip',
-  refPlaceId: [8, 9, 10, 11];
+  folder: ['LA Trip', 'Tahoe Trip', 'Vegas Trip', 'Italy Trip', 'Greece Trip', 'Seattle Trip'],
+  refPlaceId: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 }
 const seedUsers = (entries) => {
-  let dataStr = 'id reviews: ';
   for (let i = 1; i < entries; i++) {
-    dataStr += `\n`;
-    dataStr += `${i}`;
-    dataStr += `${reviews[i%6]}`;
-    dataStr += `\n`;
+    const userInfo = {
+      userId: `${userId[i%7]}`,
+      savedlist: {
+        folder: `${savedList.folder[i%6]}`,
+        refPlaceId: `${savedList.refPlaceId[i%12]}`
+      }
+    }
   }
   return new Promise((resolve, reject) => {
-    fs.writeFile('mongo-users.txt', JSON.stringify(dataStr), (err) => {
+    fs.writeFile('mongo-users.txt', JSON.stringify(userInfo), (err) => {
       if (err) {
         reject (err);
       } else {
-        resolve (dataStr);
+        resolve (dataObj);
       }
     });
   });
 }
 
-
-
-seedData(1000)
+seedUsers(100)
   .then(() => {console.log('success seeding users')})
   .catch(() => {console.log('failed seeding users')});
