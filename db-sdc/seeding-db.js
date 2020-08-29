@@ -3,7 +3,6 @@ const fs = require('fs');
 
 
 //PLACES DATA GENERATION
-const placeId;
 const rating = [4.55, 4.78, 3.9, 4.20, 4.55, 5.0];
 const numOfReviews = [238, 150, 23, 16, 5, 39, 303];
 const title = ['Port House Shibuya', 'Posh Tsukiji', 'sakura - standard pod', 'T-ROOMS near Ginza'];
@@ -16,65 +15,67 @@ const photo = ["https://5erflies.s3-us-west-1.amazonaws.com/Trinita/0e5d88c8-969
 "https://5erflies.s3-us-west-1.amazonaws.com/Trinita/36fbfe33-0c45-49b5-aea0-0cb587d3980c.jpg",
 "https://5erflies.s3-us-west-1.amazonaws.com/Trinita/199caa07-633c-45ef-91e1-f5abc75de652.jpg",
 "https://5erflies.s3-us-west-1.amazonaws.com/Trinita/d44fb71c-6573-4796-bf8b-12cedde025a8.jpg"]
-const morePlacesId += placeId;
+const morePlacesId = 0;
 
 const seedPlaces = (entries) => {
-  for (let i = 0; i < entries; i++) {
-    const placesInfo = {
-      placeId: i + 1,
+  let placesInfo;
+  for (let i = 1; i < entries; i++) {
+    placesInfo = {
+      placeId: i,
       rating: `${rating[i%6]}`,
       numOfReviews: `${numOfReviews[i%7]}`,
       title: `${title[i%4]}`,
       description: `${description[i%6]}`,
       rates: `${rates[i%7]}`,
       superHost: `${superHost[i%2]}`,
-      photo: `${photo[i%6]}`
+      photo: `${photo[i%6]}`,
+      morePlacesId: Array.from(Array(12), (_, i) => i + 1)
     }
   }
   return new Promise((resolve, reject) => {
-    fs.writeFile('mongo-places.txt', JSON.stringify(placesInfo), (err) => {
+    fs.writeFile('mongo-places.json', JSON.stringify(placesInfo), (err) => {
       if (err) {
         reject (err);
       } else {
-        resolve (dataObj);
+        resolve (placesInfo);
       }
     });
   });
 }
 
-seedPlaces(100)
+seedPlaces(30)
   .then(() => {console.log('success seeding places')})
   .catch(() => {console.log('failed seeding places')});
 
 
 //-------+-------+-------+-------+-------+-------+-------+-------+-------+
 //USERS DATA GENERATION
-const userId = [1, 2, 3, 4, 5, 6, 7];
-const savedlist = {
+const _savedlist = {
   folder: ['LA Trip', 'Tahoe Trip', 'Vegas Trip', 'Italy Trip', 'Greece Trip', 'Seattle Trip'],
-  refPlaceId: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  refPlaceId: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
 const seedUsers = (entries) => {
+  let userInfo;
   for (let i = 1; i < entries; i++) {
-    const userInfo = {
-      userId: `${userId[i%7]}`,
-      savedlist: {
-        folder: `${savedList.folder[i%6]}`,
-        refPlaceId: `${savedList.refPlaceId[i%12]}`
+    userInfo = {
+      'userId': i,
+      'savedlist': {
+        'folder': `${_savedlist.folder[i%6]}`,
+        'refPlaceId': `${_savedlist.refPlaceId[i%12]}`
       }
     }
   }
   return new Promise((resolve, reject) => {
-    fs.writeFile('mongo-users.txt', JSON.stringify(userInfo), (err) => {
+    fs.writeFile('mongo-users.json', JSON.stringify(userInfo), (err) => {
       if (err) {
         reject (err);
       } else {
-        resolve (dataObj);
+        resolve (userInfo);
       }
     });
   });
 }
 
-seedUsers(100)
+seedUsers(30)
   .then(() => {console.log('success seeding users')})
   .catch(() => {console.log('failed seeding users')});

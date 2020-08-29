@@ -11,7 +11,7 @@
     "build": "webpack -d --watch",
     "test": "jest",
     "start": "nodemon server/index.js",
-    "seed": "node db/seeding.js"
+    "seed": "node db-sdc/seeding-db.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
