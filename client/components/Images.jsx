@@ -1,19 +1,84 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import styled from 'styled-components';
+import Heart from './Heart.jsx';
+
+const InnerHeartWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  width: 250px;
+  padding: 8px;
+`;
+
+const InnerWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  padding: 8px;
+`;
 
 const ListingImage = styled.img`
-  background-color: inherit;
-  border-radius: 1em;
+  border-radius: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 `;
 
-const Wrapper = styled.div`
-  background-color: rgb(247, 247, 247);
+const OuterWrapper = styled.div`
+  margin: 0;
+  margin-bottom: 10px;
+  padding:0;
+  height: 165px;
+  width: 260px;
 `;
 
-const Images = () => (
-  <Wrapper>
-    <ListingImage src="https://fec-image-carousel-photos.s3.us-east-2.amazonaws.com/image-23.jpg" />
-  </Wrapper>
-);
+const SuperhostWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  color: rgb(34, 34, 34);
+  font-size: 12px;
+  font-family: inherit;
+  line-height: 16px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 4px 8px;
+`;
+
+class Images extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  render() {
+    return (
+      <OuterWrapper>
+        <InnerWrapper>
+          {this.props.graphics.superhost ? (
+            <SuperhostWrapper>
+              SUPERHOST
+            </SuperhostWrapper>
+          )
+            : null}
+          <Heart
+            heart={this.props.graphics}
+            modal={this.props.modal}
+            liked={this.props.liked}
+          />
+        </InnerWrapper>
+        <ListingImage alt="" src={this.props.graphics.image} />
+      </OuterWrapper>
+    );
+  }
+}
 
 export default Images;
