@@ -21,7 +21,6 @@ const placesSchema = mongoose.Schema({
 
 const usersSchema = mongoose.Schema({
   userId: { type: Number },
-  list: { type: Object },
   savedlist: {
     folder: { type: String },
     refPlaceId: { type: Array }
