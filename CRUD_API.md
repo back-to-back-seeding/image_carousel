@@ -6,34 +6,43 @@
   #### expect request in body with JSON format
   POST ```/places```
 
-  success status code: 201
 
   post body for one new place:
 
 ```js
   {
-    id: "Number",
+    placeId: "Number",
     description: "String",
     title: "String",
     rate: "Number",
     avgRating: "Number",
     numberOfRatings: "Number",
-    saved: "Boolean",
     superhost: "Boolean",
     photo: "String",
-    morePlacesId: ["Number"]
+    morePlacesId: "Number"
   }
 ```
+  add to user's saved list
+
+  POST ```/users/:id/```
+
+  Path parameter: ```id```
+
+```js
+  {
+    saved_placeId: "Number"
+  }
+```
+  success status code: 201
 
 
 ## Read an existing place (GET Request)
 
   #### Get the place with id specified
-  GET ```/places/:placeId```
+  GET ```/places/:id```
 
-  Path parameter: ```placeId```
+  Path parameter: ```id```
 
-  success status code: 200
 
 ```js
   {
@@ -49,6 +58,11 @@
     morePlacesId: ["Number"]
   }
 ```
+  GET ```/users/:id/```
+
+  Path parameter: ```id```
+
+  success status code: 200
 
 
 ## Update an existing place (PUT Request)
@@ -58,8 +72,6 @@
 
   Path parameter: ```placeId```
 
-  success status code: 204
-
 ```js
   {
     photo: "String",
@@ -68,14 +80,24 @@
     rate: "Number",
   }
 ```
+  success status code: 204
+
 
 ## Delete an existing place (DELETE Request)
 
   #### Delete by id number as path parameter
-  DELETE ```/places/:placeId```
+  DELETE ```/places/:id```
 
-  Path parameter: ```placeId```
+  Path parameter: ```id```
 
+
+  DELETE ```/users/:id```
+
+  Path parameter: ```id```
+
+```js
+  {
+    deleted_placeId: "Number"
+  }
+```
   success status code: 204
-
-
