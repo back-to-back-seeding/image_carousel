@@ -1,0 +1,48 @@
+-- drop
+CREATE DATABASE morePlaces;
+USE morePlaces
+-- const fs = require('fs'); // in modal file
+-- CONNECT TO :5432 [ AS connection_name ] [ USER connection_user ]
+
+CREATE TABLE places (
+  id INT PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,
+  rating DECIMAL(3, 2) NOT NULL,
+  numOfReviews INT,
+  name VARCHAR(50) NOT NULL,
+  description VARCHAR(150),
+  rates INT,
+  superHost BOOL,
+  photo varchar(40),
+  CHECK (rating>=0 AND rating <= 5),
+  CHECK (numOfReviews >=0),
+  CHECK (rates >=0)
+);
+
+CREATE TABLE relatedPlaces (
+  id INT NOT NULL,
+  ref_placeId INT NOT NULL
+);
+--might not need
+CREATE TABLE users (
+  id INT PRIMARY KEY NOT NULL,
+  saved_placeId INT NOT NULL
+);
+-----------------------------------------------------------
+
+ALTER TABLE relatedPlaces ADD CONSTRAINT current_placeIds (
+  FOREIGN KEY (id),
+  REFERENCES places (id)
+);
+
+ALTER TABLE relatedPlaces ADD CONSTRAINT related_placeIds (
+  FOREIGN KEY (ref_placeId),
+  REFERENCES places (id)
+);
+
+ALTER TABLE users ADD CONSTRAINT saved_placeds (
+  FOREIGN KEY (saved_placeId),
+  REFERENCES places (id)
+);
+
+-- join all table
+-- select * from table users join table places where ...
