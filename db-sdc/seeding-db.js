@@ -18,7 +18,7 @@ const photo = ["https://5erflies.s3-us-west-1.amazonaws.com/Trinita/0e5d88c8-969
 const morePlacesId = 0;
 
 const seedPlaces = (entries) => {
-  let placesInfo;
+  let places = [];
   for (let i = 1; i < entries; i++) {
     placesInfo = {
       placeId: i,
@@ -29,21 +29,22 @@ const seedPlaces = (entries) => {
       rates: `${rates[i%7]}`,
       superHost: `${superHost[i%2]}`,
       photo: `${photo[i%6]}`,
-      morePlacesId: Array.from(Array(12), (_, i) => i + 1)
+      morePlacesId: Array.from(new Array(12), (_, index) => index + i + 1)
     }
+    places.push(placesInfo);
   }
   return new Promise((resolve, reject) => {
-    fs.writeFile('mongo-places.json', JSON.stringify(placesInfo), (err) => {
+    fs.writeFile('mongo-places.json', JSON.stringify(places), (err) => {
       if (err) {
         reject (err);
       } else {
-        resolve (placesInfo);
+        resolve (places);
       }
     });
   });
 }
 
-seedPlaces(30)
+seedPlaces(20)
   .then(() => {console.log('success seeding places')})
   .catch(() => {console.log('failed seeding places')});
 
