@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const placesData = require('../mongo-places.json');
+const usersData = require('../mongo-users.json');
 
 mongoose.connect('mongodb://127.0.0.1:27017/sdcplaces', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -39,6 +40,15 @@ Places.create(placesData, (err, res) => {
     throw error;
   } else {
     console.log('success saving placesData to db!');
+  }
+});
+
+Places.create(usersData, (err, res) => {
+  if (err) {
+    console.log('failed to save to db')
+    throw error;
+  } else {
+    console.log('success saving usersData to db!');
   }
 });
 
