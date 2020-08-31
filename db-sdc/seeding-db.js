@@ -1,6 +1,4 @@
 const fs = require('fs');
-// const mongodb = require('index-mongoose.js');
-
 
 //PLACES DATA GENERATION
 const rating = [4.55, 4.78, 3.9, 4.20, 4.55, 5.0];

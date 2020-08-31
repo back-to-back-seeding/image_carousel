@@ -1,0 +1,6 @@
+id,rating,numOfReviews,title,description,rates,superHost,photo
+4,4.55,5,Port House Shibuya,4 min Nihonbashi,150,true,https://5erflies.s3-us-west-1.amazonaws.com/Trinita/199caa07-633c-45ef-91e1-f5abc75de652.jpg,5,6,7,8,9,10,11,12,13,14,15,16
+3,4.2,16,T-ROOMS near Ginza,ZEN loge 5 bedrooms,130,false,https://5erflies.s3-us-west-1.amazonaws.com/Trinita/36fbfe33-0c45-49b5-aea0-0cb587d3980c.jpg,4,5,6,7,8,9,10,11,12,13,14,15
+2,3.9,23,sakura - standard pod,6 min to Minowa station,110,true,https://5erflies.s3-us-west-1.amazonaws.com/Trinita/35cf4e3b-bc25-45d3-85ba-32793b38b7f1.jpg,3,4,5,6,7,8,9,10,11,12,13,14
+1,4.78,150,Posh Tsukiji,long term stay,101,false,https://5erflies.s3-us-west-1.amazonaws.com/Trinita/5ecb5c12-8388-4480-ae24-2452a887afac.jpg,2,3,4,5,6,7,8,9,10,11,12,13
+0,4.55,238,Port House Shibuya,Newly built in 2020,96,true,https://5erflies.s3-us-west-1.amazonaws.com/Trinita/0e5d88c8-9699-44db-92bf-3a73f9257203.jpg,1,2,3,4,5,6,7,8,9,10,11,12
