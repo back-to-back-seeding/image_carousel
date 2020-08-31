@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb://database:27017/listing', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect('mongodb://127.0.0.1:27017/listing', { useNewUrlParser: true, useUnifiedTopology: true });
-// conencting mongoose odm to mongo
+const placesData = require('../mongo-places.json');
+
+mongoose.connect('mongodb://127.0.0.1:27017/sdcplaces', { useNewUrlParser: true, useUnifiedTopology: true });
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => console.log("admin: database connected!"));
@@ -31,6 +32,15 @@ const usersSchema = mongoose.Schema({
 let Places = mongoose.model('Places', placesSchema);
 let Users = mongoose.model('Users', usersSchema);
 
+
+Places.create(placesData, (err, res) => {
+  if (err) {
+    console.log('failed to save to db')
+    throw error;
+  } else {
+    console.log('success saving placesData to db!');
+  }
+});
 
 module.exports.placesSchema = placesSchema;
 module.exports.usersSchema = usersSchema;

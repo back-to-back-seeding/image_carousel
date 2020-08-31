@@ -19,7 +19,7 @@ const morePlacesId = 0;
 
 const seedPlaces = (entries) => {
   let places = [];
-  for (let i = 1; i < entries; i++) {
+  for (let i = 1; i <= entries; i++) {
     placesInfo = {
       placeId: i,
       rating: `${rating[i%6]}`,
@@ -44,7 +44,7 @@ const seedPlaces = (entries) => {
   });
 }
 
-seedPlaces(20)
+seedPlaces(5)
   .then(() => {console.log('success seeding places')})
   .catch(() => {console.log('failed seeding places')});
 
@@ -56,8 +56,8 @@ const _savedlist = {
   refPlaceId: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
 const seedUsers = (entries) => {
-  let userInfo;
-  for (let i = 1; i < entries; i++) {
+  let user = [];
+  for (let i = 1; i <= entries; i++) {
     userInfo = {
       'userId': i,
       'savedlist': {
@@ -65,18 +65,19 @@ const seedUsers = (entries) => {
         'refPlaceId': `${_savedlist.refPlaceId[i%12]}`
       }
     }
+    user.push(userInfo)
   }
   return new Promise((resolve, reject) => {
-    fs.writeFile('mongo-users.json', JSON.stringify(userInfo), (err) => {
+    fs.writeFile('mongo-users.json', JSON.stringify(user), (err) => {
       if (err) {
         reject (err);
       } else {
-        resolve (userInfo);
+        resolve (user);
       }
     });
   });
 }
 
-seedUsers(30)
+seedUsers(5)
   .then(() => {console.log('success seeding users')})
   .catch(() => {console.log('failed seeding users')});
