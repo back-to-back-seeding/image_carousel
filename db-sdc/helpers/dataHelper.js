@@ -12,7 +12,8 @@ const helper = {
   "https://5erflies.s3-us-west-1.amazonaws.com/Trinita/36fbfe33-0c45-49b5-aea0-0cb587d3980c.jpg",
   "https://5erflies.s3-us-west-1.amazonaws.com/Trinita/199caa07-633c-45ef-91e1-f5abc75de652.jpg",
   "https://5erflies.s3-us-west-1.amazonaws.com/Trinita/d44fb71c-6573-4796-bf8b-12cedde025a8.jpg"],
-  morePlacesId: 0
+  folder: ['LA Trip', 'Tahoe Trip', 'Vegas Trip', 'Italy Trip', 'Greece Trip', 'Seattle Trip', 'Tokyo Trip', 'thailand Trip', 'Germany Trip']
 };
+
 
 module.exports = helper;
