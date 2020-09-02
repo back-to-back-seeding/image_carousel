@@ -1,10 +1,11 @@
-// generate csv file for all 3 tables inside PostgreSQL
+// generate csv file for all 3 tables of PostgreSQL
 
 const fs = require('fs');
 const helper = require('./helpers/dataHelper.js'); //data storage helper
 
 console.log(helper.rating, 'whats helpers rating?')
 
+//-------+-------+-------+-------+-TABLE 1-+-------+-------+-------+-------+
 //-------Places--8 columns
 function writeTenMillPlaces(maxEntry, writer, encoding, callback) {
   let i = maxEntry; //10000000
@@ -20,9 +21,7 @@ function writeTenMillPlaces(maxEntry, writer, encoding, callback) {
       const rates = `${helper.rates[i%7]}`;
       const superHost = `${helper.superHost[i%2]}`;
       const photo = `${helper.photo[i%6]}`;
-      let start_id = id < 13 ? id : id - 13;
-      const morePlacesId = Array.from(new Array(12), (_, index) => index + start_id + 1);
-      const data = `${id},${rating},${numOfReviews},${title},${description},${rates},${superHost},${photo},${morePlacesId}\n`;
+      const data = `${id},${rating},${numOfReviews},${title},${description},${rates},${superHost},${photo}\n`;
       if (i === 1) {
         // last time!
         writer.write(data, encoding, callback);
@@ -41,9 +40,8 @@ write();
 }
 
 
-
-//-------+-------+-------+-------+-------+-------+-------+-------+-------+
-//-------RelatedPlaces--2 columns
+//-------+-------+-------+-------+-TABLE 2-+-------+-------+-------+-------+
+//-------Relatedplaces--2 columns
 
 function writeTenMillRelatedPlaces(maxEntry, writer, encoding, callback) {
   let i = maxEntry; //1000000
@@ -51,10 +49,13 @@ function writeTenMillRelatedPlaces(maxEntry, writer, encoding, callback) {
     let ok = true;
     do {
       i -= 1;
-      const id = i;
-      let start_id = id < 13 ? id : id - 13;
-      const ref_placeId = Array.from(new Array(12), (_, index) => index + start_id + 1);
-      const data = `${id},${ref_placeId}\n`;
+      let data = '';
+      let _id = i;
+      let start_id = _id < 13 ? _id + 1 : _id - 13;
+      for (var ref_placeId = start_id; ref_placeId < start_id + 12; ref_placeId++) {
+        const id = i;
+        data += `${id},${ref_placeId}\n`;
+      }
       if (i === 1) {
         writer.write(data, encoding, callback);
       } else {
@@ -70,25 +71,31 @@ write();
 
 
 
-//-------+-------+-------+-------+-------+-------+-------+-------+-------+
-//-------Users
+//-------+-------+-------+-------+-TABLE 3-+-------+-------+-------+-------+
+//-------Users---3 columns
 
 function writeTOneMillUsers(maxEntry, writer, encoding, callback) {
-  let i = maxEntry; //1000000
+  let i = maxEntry; //10000000
   function write() {
     let ok = true;
     do {
       i -= 1;
-      const id = i;
-      const folder = `${helper.folder[Math.floor(Math.random() * 9)]}`;
-      let start_id = id < 4 ? id : id - 4;
-      const saved_placeId = Array.from(new Array(3), (_, index) => index + start_id + 1);
-      let data = `${id},${folder},${saved_placeId}\n`;
+      let id = i;
       let count = 0;
-      while (Math.random() < 0.4 && count < 5) {
-        const folder = `${helper.folder[Math.floor(Math.random() * 9)]}`;
-        const saved_placeId = Array.from(new Array(3), (_, index) => index + start_id + 1);
+      let start_id = id < 4 ? id : id - 4;
+      let data = '';
+
+      let folder = `${helper.folder[Math.floor(Math.random() * 9)]}`;
+      for (let saved_placeId = start_id; saved_placeId < start_id + 3; saved_placeId++) {
         data += `${id},${folder},${saved_placeId}\n`;
+      }
+
+      // 40% chance of generating more folders for one user. Max 5 folders
+      while (Math.random() < 0.4 && count < 5) {
+        folder = `${helper.folder[Math.floor(Math.random() * 9)]}`;
+        for (let saved_placeId = start_id; saved_placeId < start_id + 3; saved_placeId++) {
+          data += `${id},${folder},${saved_placeId}\n`;
+        }
         count++;
       }
       if (i === 1) {
@@ -106,23 +113,23 @@ write();
 
 
 // create a stream, name the file and write the headers for the CSV file.
-const writePlaces = fs.createWriteStream('places.csv');
-writePlaces.write('id,rating,numOfReviews,title,description,rates,superHost,photo\n', 'utf8');
+// const writePlaces = fs.createWriteStream('places.csv');
+// writePlaces.write('id,rating,numOfReviews,title,description,rates,superHost,photo\n', 'utf8');
 
-writeTenMillPlaces(30, writePlaces, 'utf-8', () => {
-  writePlaces.end();
-});
+// writeTenMillPlaces(10000000, writePlaces, 'utf-8', () => {
+//   writePlaces.end();
+// });
 
-const writeRelatedPlaces = fs.createWriteStream('relatedPlaces.csv');
-writeRelatedPlaces.write('id,ref_placeId\n', 'utf8');
+// const writeRelatedPlaces = fs.createWriteStream('relatedplaces.csv');
+// writeRelatedPlaces.write('id,ref_placeId\n', 'utf8');
 
-writeTenMillRelatedPlaces(30, writeRelatedPlaces, 'utf-8', () => {
-  writeRelatedPlaces.end();
-});
+// writeTenMillRelatedPlaces(10000000, writeRelatedPlaces, 'utf-8', () => {
+//   writeRelatedPlaces.end();
+// });
 
-const writeUsers = fs.createWriteStream('Users.csv');
-writeUsers.write('id,saved_placeId\n', 'utf8');
+const writeUsers = fs.createWriteStream('users.csv');
+writeUsers.write('id,folder,saved_placeId\n', 'utf8');
 
-writeTOneMillUsers(30, writeUsers, 'utf-8', () => {
+writeTOneMillUsers(1000000, writeUsers, 'utf-8', () => {
   writeUsers.end();
 });
