@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const placesData = require('../mongo-places.json');
-const usersData = require('../mongo-users.json');
+const placesData = require('../placesMg.csv');
+// const placesData = require('../mongo-places.json');
+// const usersData = require('../mongo-users.json');
 
 mongoose.connect('mongodb://127.0.0.1:27017/sdcplaces', { useNewUrlParser: true, useUnifiedTopology: true });
 
