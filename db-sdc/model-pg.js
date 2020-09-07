@@ -75,7 +75,7 @@ write();
 //-------Users---3 columns
 
 function writeTOneMillUsers(maxEntry, writer, encoding, callback) {
-  let i = maxEntry; //10000000
+  let i = maxEntry; //1000000
   function write() {
     let ok = true;
     do {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const placesData = require('../placesMg.csv');
-// const placesData = require('../mongo-places.json');
-// const usersData = require('../mongo-users.json');
+// const placesData = require('../placesMg.csv');
+// const usersData = require('../usersMg.csv');
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/sdcplaces', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -24,11 +24,17 @@ const placesSchema = mongoose.Schema({
 
 const usersSchema = mongoose.Schema({
   userId: { type: Number },
-  savedlist: {
-    folder: { type: String },
-    refPlaceId: { type: Array }
-  }
+  folder: { type: String },
+  refPlaceId: { type: Array }
 });
+
+// const usersSchema = mongoose.Schema({
+//   userId: { type: Number },
+//   savedlist: {
+//     folder: { type: String },
+//     refPlaceId: { type: Array }
+//   }
+// });
 
 
 let Places = mongoose.model('Places', placesSchema);
