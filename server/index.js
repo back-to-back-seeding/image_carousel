@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 // initial page load - get 12 related places of query id
 app.get('/places/:id', (req, res) => {
   let queryId = req.params.id;
-  console.log('places req.param?', req.params.id);
+  // console.log('places req.param?', req.params.id);
   psql.getAllPlaces('places', queryId, (err, places) => {
     if (err) {
       console.log('get places failed');
@@ -31,7 +31,7 @@ app.get('/places/:id', (req, res) => {
 // get a user's saved info
 app.get('/users/:id', (req, res) => {
   let queryId = req.params.id;
-  console.log('users req.param?', req.params.id);
+  // console.log('users req.param?', req.params.id);
   psql.getUserInfo('users', queryId, (err, userInfo) => {
     if (err) {
       console.log('get users failed');
