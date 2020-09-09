@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable import/extensions */
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -72,12 +69,13 @@ class App extends React.Component {
 
   getListings() {
     //http://localhost:3004
-    const queryID = window.location.search;
-    console.log('url parameter is ?id=#', queryID)
-    const url = '/places' + queryID;
+    const queryID = new URL(location.href).searchParams.get('id');
+    // console.log('url parameter is ?id=#', queryID)
+    // const url = '/places' + queryID;
+    const url = '/places/' + queryID;
     axios.get(url)
       .then((response) => {
-        const suggestedListings = response.data;
+        const suggestedListings = response.data.rows;
         console.log(suggestedListings);
         this.setState({ suggestedListings, isLoading: false });
         this.renderPage(1);
