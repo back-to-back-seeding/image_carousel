@@ -27,7 +27,7 @@ CREATE TABLE relatedplaces (
 CREATE TABLE users (
   id INT NOT NULL,
   folder VARCHAR(20) NOT NULL,
-  saved_placeId INT NOT NULL
+  saved_placeId INT
 );
 -----------------------------------------------------------
 

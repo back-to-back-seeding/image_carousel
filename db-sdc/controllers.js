@@ -38,8 +38,34 @@ const getUserInfo = (table, id, callback) => {
   }));
 };
 
+// INSERT INTO users(id, folder, saved_placeid)
+// VALUES (1, 'China Trip', 88);
+const addUserFolder = (table, id, folderName, callback) => {
+  console.log(`ADD - table: ${table}\n id: ${id}\n folderName: ${folderName}`);
+  client.query(`INSERT INTO ${table} (id,folder) VALUES (${id}, '${folderName}')`,((err, res) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, res);
+    }
+  }));
+};
 
-// module.exports = client;
-module.exports.getAllPlaces = getAllPlaces;
-module.exports.getUserInfo = getUserInfo;
+//delete from users where id = 1 and saved_placeid = 189 returning *
+const deleteUserFolder = (table, id, folderName, callback) => {
+  console.log(`DELETE - table: ${table}\n id: ${id}\n folderName: ${folderName}`);
+  client.query(`DELETE FROM ${table} WHERE id = ${id} and folder = '${folderName}'`,((err, res) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, res);
+    }
+  }));
+};
+
+
+module.exports.getAllPlaces = getAllPlaces;         //GET
+module.exports.getUserInfo = getUserInfo;           //GET
+module.exports.addUserFolder = addUserFolder;       //POST
+module.exports.deleteUserFolder = deleteUserFolder; //DELETE
 

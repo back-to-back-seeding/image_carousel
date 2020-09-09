@@ -29,7 +29,7 @@ app.get('/places/:id', (req, res) => {
 });
 
 // get a user's saved info
-app.get('/users/:id/', (req, res) => {
+app.get('/users/:id', (req, res) => {
   let queryId = req.params.id;
   console.log('users req.param?', req.params.id);
   psql.getUserInfo('users', queryId, (err, userInfo) => {
@@ -43,59 +43,43 @@ app.get('/users/:id/', (req, res) => {
   });
 });
 
-// app.post('/users/:id/', (req, res) => {
-//   console.log('post req working!');
-//   let queryparam = req.query;
-//   const newListing = {
-//     "id" : 122,
-//     "image" : "https://fec-image-carousel-photos.s3.us-east-2.amazonaws.com/image-130.jpg",
-//     "description" : "Beautiful houseboat in San Clemente",
-//     "title" : "Entire unit·6 beds",
-//     "rate" : 332,
-//     "avgRating" : 4.53,
-//     "numberOfRatings" : 78,
-//     "wasLiked" : true,
-//     "superhost" : false
-//   };
-//   model.createListings(newListing, (error, listings) => {
-//     if (error) {
-//       console.log('post failed');
-//       res.status(400).send(error);
-//     } else {
-//       console.log('POST received!', req.body);
-//       res.status(201).send();
-//     }
-//   }, req.body);
-// });
-
-// update // idempotent
-app.put('/places', (req, res) => {
-  let queryId = req.query;
-  console.log('put req called!');
-  let queryParams = req.query; //object
-  model.putListing(queryParams, (error, listings) => {
-    if (error) {
-      console.log('put failed');
-      res.status(400).send(error);
+// user add a new folder -->  json: {"folder": foldername}
+app.post('/users/:id/folder', (req, res) => {
+  const folder = {folder: req.body.folder};
+  psql.addUserFolder('users', req.params.id, folder.folder, (err, userInfo) => {
+    if (err) {
+      console.log('post folder failed');
+      res.status(400).send(err);
     } else {
-      console.log('PUT works!');
-      res.status(204).send();
+      console.log('post folder received!');
+      res.status(201).send(userInfo);
     }
   });
 });
 
-// use URL to delete listing with id=12: http://localhost:3004/places?id=12
-app.delete('/places', (req, res) => {
-  let queryId = req.query; //delete by id
-  console.log(queryId); // {id: '12'}
-  console.log('delete req working!');
-  model.deleteListing(queryId, (error, listings) => {
-    if (error) {
-      console.log('server down');
-      res.status(400).send(error);
+// user add a new place into folder -->  json: {"saved_placeid": id}
+// app.post('/users/:id/folder', (req, res) => {
+//   const saved_placeid = {saved_placeid: req.body.saved_placeid};
+//   psql.addUserFolder('users', req.params.id, saved_placeid.saved_placeid, (err, userInfo) => {
+//     if (err) {
+//       console.log('save placeId failed');
+//       res.status(400).send(err);
+//     } else {
+//       console.log('save placeId received!');
+//       res.status(201).send(userInfo);
+//     }
+//   });
+// });
+
+app.delete('/users/:id/folder', (req, res) => {
+  const folder = {folder: req.body.folder};
+  psql.deleteUserFolder('users', req.params.id, folder.folder, (err, userInfo) => {
+    if (err) {
+      console.log('delete folder failed');
+      res.status(400).send(err);
     } else {
-      console.log('delete received!');
-      res.status(200).send(listings);
+      console.log('deleted folder!');
+      res.status(204).send();
     }
   });
 });
