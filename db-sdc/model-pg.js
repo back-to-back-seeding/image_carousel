@@ -113,19 +113,19 @@ write();
 
 
 // create a stream, name the file and write the headers for the CSV file.
-// const writePlaces = fs.createWriteStream('places.csv');
-// writePlaces.write('id,rating,numOfReviews,title,description,rates,superHost,photo\n', 'utf8');
+const writePlaces = fs.createWriteStream('places.csv');
+writePlaces.write('id,rating,numOfReviews,title,description,rates,superHost,photo\n', 'utf8');
 
-// writeTenMillPlaces(10000000, writePlaces, 'utf-8', () => {
-//   writePlaces.end();
-// });
+writeTenMillPlaces(10000000, writePlaces, 'utf-8', () => {
+  writePlaces.end();
+});
 
-// const writeRelatedPlaces = fs.createWriteStream('relatedplaces.csv');
-// writeRelatedPlaces.write('id,ref_placeId\n', 'utf8');
+const writeRelatedPlaces = fs.createWriteStream('relatedplaces.csv');
+writeRelatedPlaces.write('id,ref_placeId\n', 'utf8');
 
-// writeTenMillRelatedPlaces(10000000, writeRelatedPlaces, 'utf-8', () => {
-//   writeRelatedPlaces.end();
-// });
+writeTenMillRelatedPlaces(10000000, writeRelatedPlaces, 'utf-8', () => {
+  writeRelatedPlaces.end();
+});
 
 const writeUsers = fs.createWriteStream('users.csv');
 writeUsers.write('id,folder,saved_placeId\n', 'utf8');
