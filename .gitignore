@@ -26,5 +26,4 @@ dist/
 client/
 db/
 
-newrelic.js
 *.csv
