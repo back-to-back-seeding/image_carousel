@@ -1,13 +1,14 @@
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
-const client = new Client ({
-  host: 'localhost',
+const pool = new Pool ({
+  host: '13.57.247.157',
   user: 'shirleywu',
+  password: '$sdcmoreplaces'
   database: 'moreplaces',
   port: 5432
 });
 
-client.connect((err) => {
+pool.connect((err) => {
   if (err) {
     console.log('failed connecting to psql', err);
   } else {
@@ -18,7 +19,7 @@ client.connect((err) => {
 // select * from places where id in (select ref_placeId from relatedplaces where id = 499);
 const getAllPlaces = (table, id, callback) => {
   console.log('table: ', table, ' & id: ', id)
-  client.query(`SELECT * FROM ${table} WHERE ID IN (SELECT ref_placeId FROM relatedplaces WHERE ID = ${id})`,((err, res) => {
+  pool.query(`SELECT * FROM ${table} WHERE ID IN (SELECT ref_placeId FROM relatedplaces WHERE ID = ${id})`,((err, res) => {
     if (err) {
       callback(err, null);
     } else {
@@ -29,7 +30,7 @@ const getAllPlaces = (table, id, callback) => {
 
 const getUserInfo = (table, id, callback) => {
   console.log('table: ', table, ' & id: ', id)
-  client.query(`SELECT * FROM ${table} WHERE ID = ${id}`,((err, res) => {
+  pool.query(`SELECT * FROM ${table} WHERE ID = ${id}`,((err, res) => {
     if (err) {
       callback(err, null);
     } else {
@@ -42,7 +43,7 @@ const getUserInfo = (table, id, callback) => {
 // VALUES (1, 'China Trip', 88);
 const addUserFolder = (table, id, folderName, callback) => {
   console.log(`ADD - table: ${table}\n id: ${id}\n folderName: ${folderName}`);
-  client.query(`INSERT INTO ${table} (id,folder) VALUES (${id}, '${folderName}')`,((err, res) => {
+  pool.query(`INSERT INTO ${table} (id,folder) VALUES (${id}, '${folderName}')`,((err, res) => {
     if (err) {
       callback(err, null);
     } else {
@@ -54,7 +55,7 @@ const addUserFolder = (table, id, folderName, callback) => {
 //delete from users where id = 1 and saved_placeid = 189 returning *
 const deleteUserFolder = (table, id, folderName, callback) => {
   console.log(`DELETE - table: ${table}\n id: ${id}\n folderName: ${folderName}`);
-  client.query(`DELETE FROM ${table} WHERE id = ${id} and folder = '${folderName}'`,((err, res) => {
+  pool.query(`DELETE FROM ${table} WHERE id = ${id} and folder = '${folderName}'`,((err, res) => {
     if (err) {
       callback(err, null);
     } else {
