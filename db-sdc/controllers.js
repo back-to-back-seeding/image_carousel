@@ -43,8 +43,9 @@ const getUserInfo = (table, id, callback) => {
 // VALUES (1, 'China Trip', 88);
 const addUserFolder = (table, id, folderName, callback) => {
   console.log(`ADD - table: ${table}\n id: ${id}\n folderName: ${folderName}`);
-  pool.query(`INSERT INTO ${table} (id,folder) VALUES (${id}, '${folderName}')`,((err, res) => {
+  pool.query(`INSERT INTO ${table} (id,folder) VALUES (${id}, "${folderName}")`,((err, res) => {
     if (err) {
+      console.log(err);
       callback(err, null);
     } else {
       callback(null, res);
