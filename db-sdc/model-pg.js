@@ -20,7 +20,7 @@ function writeTenMillPlaces(maxEntry, writer, encoding, callback) {
       const description = `${helper.description[i%6]}`;
       const rates = `${helper.rates[i%7]}`;
       const superHost = `${helper.superHost[i%2]}`;
-      const photo = `${helper.photo[i%6]}`;
+      const photo = `${helper.photo[i%21]}`;
       const data = `${id},${rating},${numOfReviews},${title},${description},${rates},${superHost},${photo}\n`;
       if (i === 1) {
         // last time!
