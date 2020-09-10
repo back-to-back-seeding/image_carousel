@@ -13,7 +13,7 @@ const PORT = 3005;
 app.use(express.static(path.join(__dirname, '../public')));
 //:room_id', express.static(path.join(__dirname, '../public')));
 
-app.get('http://13.57.247.157:3005/loaderio-67e0d509b34c8c6340e66a53a65d5c60.txt', (req, res) => {
+app.get('/loaderio-67e0d509b34c8c6340e66a53a65d5c60.txt', (req, res) => {
   res.send('loaderio-67e0d509b34c8c6340e66a53a65d5c60');
 });
 
