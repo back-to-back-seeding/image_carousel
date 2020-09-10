@@ -1,4 +1,4 @@
-// require('newrelic');
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
@@ -13,16 +13,18 @@ const PORT = 3005;
 app.use(express.static(path.join(__dirname, '../public')));
 //:room_id', express.static(path.join(__dirname, '../public')));
 
+app.get('http://13.57.247.157:3005/loaderio-67e0d509b34c8c6340e66a53a65d5c60.txt', (req, res) => {
+  res.send('loaderio-67e0d509b34c8c6340e66a53a65d5c60');
+});
+
 // initial page load - get 12 related places of query id
 app.get('/places/:id', (req, res) => {
   let queryId = req.params.id;
   // console.log('places req.param?', req.params.id);
   psql.getAllPlaces('places', queryId, (err, places) => {
     if (err) {
-      console.log('get places failed');
       res.status(400).send(err);
     } else {
-      console.log('get places received!');
       res.status(200).send(places);
     }
   });
@@ -31,13 +33,10 @@ app.get('/places/:id', (req, res) => {
 // get a user's saved info
 app.get('/users/:id', (req, res) => {
   let queryId = req.params.id;
-  // console.log('users req.param?', req.params.id);
   psql.getUserInfo('users', queryId, (err, userInfo) => {
     if (err) {
-      console.log('get users failed');
       res.status(400).send(err);
     } else {
-      console.log('get users received!');
       res.status(200).send(userInfo);
     }
   });
@@ -48,10 +47,8 @@ app.post('/users/:id/folder', (req, res) => {
   const folder = {folder: req.body.folder};
   psql.addUserFolder('users', req.params.id, folder.folder, (err, userInfo) => {
     if (err) {
-      console.log('post folder failed');
       res.status(400).send(err);
     } else {
-      console.log('post folder received!');
       res.status(201).send(userInfo);
     }
   });
@@ -75,7 +72,6 @@ app.delete('/users/:id/folder', (req, res) => {
   const folder = {folder: req.body.folder};
   psql.deleteUserFolder('users', req.params.id, folder.folder, (err, userInfo) => {
     if (err) {
-      console.log('delete folder failed');
       res.status(400).send(err);
     } else {
       console.log('deleted folder!');
