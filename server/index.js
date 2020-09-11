@@ -13,8 +13,8 @@ const PORT = 3005;
 app.use(express.static(path.join(__dirname, '../public')));
 //:room_id', express.static(path.join(__dirname, '../public')));
 
-app.get('/loaderio-67e0d509b34c8c6340e66a53a65d5c60.txt', (req, res) => {
-  res.send('loaderio-67e0d509b34c8c6340e66a53a65d5c60');
+app.get('/loaderio-d8fa6a4899537d1cbe1b7243df76f2a4.txt', (req, res) => {
+  res.send('loaderio-d8fa6a4899537d1cbe1b7243df76f2a4');
 });
 
 // initial page load - get 12 related places of query id
