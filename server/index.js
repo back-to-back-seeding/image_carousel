@@ -45,7 +45,6 @@ app.get('/users/:id', (req, res) => {
 // user add a new folder -->  json: {"folder": foldername}
 app.post('/users/:id/folder', (req, res) => {
   const folder = req.body.folder;
-  console.log(req.body);
   psql.addUserFolder('users', req.params.id, folder, (err, userInfo) => {
     if (err) {
       res.status(400).send(err);
