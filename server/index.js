@@ -1,4 +1,4 @@
-//require('newrelic');
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
@@ -13,12 +13,10 @@ const PORT = 3005;
 app.use(express.static(path.join(__dirname, '../public')));
 //:room_id', express.static(path.join(__dirname, '../public')));
 
-app.get('/loaderio-9e57802e341038a0c8435752b81b1ba3.txt', (req, res) => {
-  res.send('loaderio-9e57802e341038a0c8435752b81b1ba3');
+app.get('/loaderio-9298e464b53071aecd9544947ecca5f9.txt', (req, res) => {
+  res.send('loaderio-9298e464b53071aecd9544947ecca5f9');
 });
-// app.get('/loaderio-d8fa6a4899537d1cbe1b7243df76f2a4.txt', (req, res) => {
-//   res.send('loaderio-d8fa6a4899537d1cbe1b7243df76f2a4');
-// });
+
 
 // initial page load - get 12 related places of query id
 app.get('/places/:id', (req, res) => {
