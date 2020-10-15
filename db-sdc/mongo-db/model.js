@@ -1,9 +1,9 @@
 /* eslint-disable array-callback-return */
-const Listing = require('./index.js');
+const Listing = require('./index-mongoose.js');
 
 module.exports = {
   getListings: (id, callback) => {
-    Listing.find({'id': id}, (error, listings) => {
+    Listing.find({'placeId': id}, (error, listings) => {
       if (error) {
         console.log('cannot search database');
         callback(error, null);

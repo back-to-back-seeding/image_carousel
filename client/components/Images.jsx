@@ -25,7 +25,7 @@ const ListingImage = styled.img`
   box-sizing: border-box;
   overflow: hidden;
   height: 100%;
-  width: 100%;
+  /* width: 100%; remove to give round corner on last img*/
   object-fit: cover;
 `;
 
@@ -75,7 +75,7 @@ class Images extends React.Component {
             liked={this.props.liked}
           />
         </InnerWrapper>
-        <ListingImage alt="" src={this.props.graphics.image} />
+        <ListingImage alt="" src={this.props.graphics} />
       </OuterWrapper>
     );
   }

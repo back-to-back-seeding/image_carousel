@@ -1,25 +1,82 @@
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
 const expressStaticGzip = require('express-static-gzip');
-const model = require('../db/model.js');
+const psql = require('../db-sdc/controllers');
 
 const app = express();
+app.use(express.json());
 app.use(compression());
 
-const PORT = 3004;
-// app.use('/rooms/:room_id', express.static(path.join(__dirname, '../public')));
-app.use('/rooms/:room_id', expressStaticGzip(path.join(__dirname, '../public')));
+const PORT = 3005;
+app.use(express.static(path.join(__dirname, '../public')));
+//:room_id', express.static(path.join(__dirname, '../public')));
 
-app.get('/suggestedListings', (req, res) => {
-  console.log('get req working!');
-  model.getListings((error, listings) => {
-    if (error) {
-      console.log('server down');
-      res.status(400).send(error);
+app.get('/loaderio-9298e464b53071aecd9544947ecca5f9.txt', (req, res) => {
+  res.send('loaderio-9298e464b53071aecd9544947ecca5f9');
+});
+
+
+// initial page load - get 12 related places of query id
+app.get('/places/:id', (req, res) => {
+  let queryId = req.params.id;
+  // console.log('places req.param?', req.params.id);
+  psql.getAllPlaces('places', queryId, (err, places) => {
+    if (err) {
+      res.status(400).send(err);
     } else {
-      console.log('GET received!');
-      res.status(200).send(listings);
+      res.status(200).send(places);
+    }
+  });
+});
+
+// get a user's saved info
+app.get('/users/:id', (req, res) => {
+  let queryId = req.params.id;
+  psql.getUserInfo('users', queryId, (err, userInfo) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(200).send(userInfo);
+    }
+  });
+});
+
+// user add a new folder -->  json: {"folder": foldername}
+app.post('/users/:id/folder', (req, res) => {
+  const folder = req.body.folder;
+  psql.addUserFolder('users', req.params.id, folder, (err, userInfo) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(201).send(userInfo);
+    }
+  });
+});
+
+// user add a new place into folder -->  json: {"saved_placeid": id}
+// app.post('/users/:id/folder', (req, res) => {
+//   const saved_placeid = {saved_placeid: req.body.saved_placeid};
+//   psql.addUserFolder('users', req.params.id, saved_placeid.saved_placeid, (err, userInfo) => {
+//     if (err) {
+//       console.log('save placeId failed');
+//       res.status(400).send(err);
+//     } else {
+//       console.log('save placeId received!');
+//       res.status(201).send(userInfo);
+//     }
+//   });
+// });
+
+app.delete('/users/:id/folder', (req, res) => {
+  const folder = {folder: req.body.folder};
+  psql.deleteUserFolder('users', req.params.id, folder.folder, (err, userInfo) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      console.log('deleted folder!');
+      res.status(204).send();
     }
   });
 });

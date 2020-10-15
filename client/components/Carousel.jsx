@@ -35,15 +35,19 @@ const Carousel = (props) => (
   <Wrapper>
     <List>
       {props.carousel.map((listing) => {
-        // console.log(listing.superhost);
-        // console.log(props.modal);
+        console.log('whats listing.photo', listing.photo);
+        console.log('whats props.carousel?', props.carousel);
         return (
           <Item>
-            <Images graphics={listing} modal={props.modal} liked={props.liked} />
-            <Rating rating={listing} />
+            <Images
+              graphics={listing.photo}
+              modal={props.modal}
+              liked={listing.liked}
+            />
+            <Rating rating={listing.rating} numofreviews={listing.numofreviews}/>
             <Listing listing={listing} />
             <Description description={listing} />
-            <NightlyRate rate={listing} />
+            <NightlyRate rate={listing.rates} />
           </Item>
         );
       })}

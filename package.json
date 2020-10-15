@@ -10,7 +10,9 @@
   "scripts": {
     "build": "webpack -d --watch",
     "test": "jest",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "seedmongoose": "node db-sdc/index-mongoose.js",
+    "seedpg": "node db-sdc/index-pg.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -21,7 +23,9 @@
     "live-server": "^1.2.1",
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.27",
+    "newrelic": "^6.13.0",
     "nodemon": "^2.0.4",
+    "pg": "^8.3.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.1"
